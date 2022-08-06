@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="TPCAD">
+    
+    <title>
+        
+            Vim |
+        
+        Eulamber
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.png">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#CC0000","avatar":"https://s1.ax1x.com/2022/03/09/bReWXd.png","favicon":"/images/logo.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"愿热情在风中永不熄灭"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Eulamber
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Vim</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://s1.ax1x.com/2022/03/09/bReWXd.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TPCAD</span>
+                        
+                            <span class="author-label">厨力满满的安柏厨</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-02-18 12:03:00</span>
+        <span class="mobile">2022-02-18 12:03</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/note/">note</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Vim/">Vim</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><p>Vi 是一款文本编辑器，几乎所有 Linux 系统都会内置 vi。Vim 是 Vi 的增强版，是目前使用最多的类vi编辑器之一。Vim 通过各种命令与组合键实现文本间的移动和跳转，让你在编辑代码时脱离鼠标，更加高效地进行代码编辑。</p>
+<p>本文基于 NeoVim，它是一款基于 Vim 的类vi编辑器。在 99% 支持 Vim 的基础上增加更多新功能。</p>
+<h2 id="安装-NeoVim"><a href="#安装-NeoVim" class="headerlink" title="安装 NeoVim"></a>安装 NeoVim</h2><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/neovim/neovim/wiki/Installing-Neovim" >官方安装教程<i class="fas fa-external-link-alt"></i></a></p>
+<p>Debian 及其衍生系统可通过 PPA 安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common</span><br><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:neovim-ppa/stable</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install neovim</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Vim"><a href="#使用-Vim" class="headerlink" title="使用 Vim"></a>使用 Vim</h2><p>安装 NeoVim&#x2F;Vim 后，在终端输入 <code>vim</code> 即可打开 NeoVim&#x2F;Vim。后面接上文件名即可打开以 Vim 打开对应文件。</p>
+<p>Vim 一般有四个模式：</p>
+<ul>
+<li>正常模式（Normal-mode）</li>
+<li>插入模式（Insert-mode）</li>
+<li>命令模式（Command-mode）</li>
+<li>可视模式（Visual-mode）</li>
+</ul>
+<h3 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h3><p>启动 Vim 即会进入<strong>正常模式</strong>。Vim 的大部分操作都是在正常模式下完成的。正常模式一般用于浏览文件，进行复制、粘贴、删除等操作。在此模式下，按下键盘按键都会被识别为命令，而不是字符。</p>
+<p>要进入其他三个模式只能从正常模式进入。在其他三个模式下，按下 <code>esc</code> 即可进入正常模式。</p>
+<h3 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h3><p>在正常模式下按下以下按键即可进入插入模式。</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>进入位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>光标所在处</td>
+</tr>
+<tr>
+<td>I</td>
+<td>光标所在行第一个非空字符</td>
+</tr>
+<tr>
+<td>a</td>
+<td>光标所在处下一个字符</td>
+</tr>
+<tr>
+<td>A</td>
+<td>光标所在行最后一个字符</td>
+</tr>
+<tr>
+<td>o</td>
+<td>光标所在行的下一行（新的一行）</td>
+</tr>
+<tr>
+<td>O</td>
+<td>光标所在行的上一行（新的一行）</td>
+</tr>
+<tr>
+<td>r</td>
+<td>进入取代模式（Replace-mode）。取代光标所在处一次</td>
+</tr>
+<tr>
+<td>R</td>
+<td>进入取代模式（Replace-mode）。一直取代光标所在处，直至推出</td>
+</tr>
+</tbody></table>
+<p>在插入模式下，可以正常输入字符。同时可以使用以下功能按键。</p>
+<ul>
+<li><strong>Enter</strong>：换行</li>
+<li><strong>Backspace</strong>：删除光标前一个字符</li>
+<li><strong>Delete</strong>：删除光标后一个字符</li>
+<li><strong>方向键</strong>：移动光标</li>
+<li><strong>Home&#x2F;End</strong>：移动光标至行首或行尾</li>
+<li><strong>PageUp&#x2F;PageDown</strong>：上下翻页</li>
+<li><strong>ESC</strong>：退出插入模式</li>
+</ul>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>在正常模式下按下 <code>:</code> 或 <code>/</code> 即可进入命令模式。在命令模式可以执行 Vim 或插件提供的命令。</p>
+<p>具体命令见后文。</p>
+<h3 id="可视模式"><a href="#可视模式" class="headerlink" title="可视模式"></a>可视模式</h3><p>在正常模式下按下 <code>v</code> 即可进入可视模式。在可视模式下，移动光标即可选中文本，选中后可使用正常模式下的命令进行复制、粘贴、删除等操作。</p>
+<h2 id="按键说明"><a href="#按键说明" class="headerlink" title="按键说明"></a>按键说明</h2><h3 id="正常模式-1"><a href="#正常模式-1" class="headerlink" title="正常模式"></a>正常模式</h3><h4 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h4><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h</td>
+<td>光标向左移动一个字符</td>
+</tr>
+<tr>
+<td>j</td>
+<td>光标向下移动一个字符</td>
+</tr>
+<tr>
+<td>k</td>
+<td>光标向上移动一个字符</td>
+</tr>
+<tr>
+<td>l</td>
+<td>光标向右移动一个字符</td>
+</tr>
+</tbody></table>
+<p>以上四个按键一次只能移动一个字符，想要实现多次移动，可以先按下数字键，再按下动作。如：<code>30j</code> 表示向下移动 30 个字符。</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>w</td>
+<td>向前移动一个单词</td>
+</tr>
+<tr>
+<td>b</td>
+<td>向后移动一个单词</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>移动光标至文档第一行</td>
+</tr>
+<tr>
+<td>G</td>
+<td>移动光标至文档最后一行</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>n 为数字，移动光标至文档第 n 行</td>
+</tr>
+<tr>
+<td>0</td>
+<td>移动光标至所在行行首</td>
+</tr>
+<tr>
+<td>$</td>
+<td>移动光标至所在行行尾</td>
+</tr>
+<tr>
+<td>H</td>
+<td>移动光标到屏幕的最上方一行的第一个字符</td>
+</tr>
+<tr>
+<td>M</td>
+<td>移动光标到屏幕的中央一行的第一个字符</td>
+</tr>
+<tr>
+<td>L</td>
+<td>移动光标到屏幕的最下方一行的第一个字符</td>
+</tr>
+<tr>
+<td>Ctrl+f</td>
+<td>向下翻动一页</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>向上翻动一页</td>
+</tr>
+<tr>
+<td>Ctrl+d</td>
+<td>向下翻动半页</td>
+</tr>
+<tr>
+<td>Ctrl+u</td>
+<td>向上翻动半页</td>
+</tr>
+<tr>
+<td>n&lt;space&gt;</td>
+<td>n 是数字，向后移动 n 个字符</td>
+</tr>
+<tr>
+<td>n&lt;enter&gt;</td>
+<td>n 是数字，向下移动 n 个字符</td>
+</tr>
+</tbody></table>
+<h4 id="复制、粘贴、删除"><a href="#复制、粘贴、删除" class="headerlink" title="复制、粘贴、删除"></a>复制、粘贴、删除</h4><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x</td>
+<td>删除光标后一个字符</td>
+</tr>
+<tr>
+<td>X</td>
+<td>删除光标前一个字符</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>剪切光标所在行</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制光标所在行</td>
+</tr>
+<tr>
+<td>p</td>
+<td>粘贴在下一行</td>
+</tr>
+<tr>
+<td>P</td>
+<td>粘贴在上一行</td>
+</tr>
+</tbody></table>
+<p>以上动作均可搭配光标移动操作和数字使用。如：<code>dG</code> 表示删除光标所在行至文档最后一行的内容，<code>d$</code> 表示删除光标所在行至该行行尾的内容，<code>nyy</code> 表示复制光标所在行向下 n 行的内容。</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u</td>
+<td>撤销上一动作</td>
+</tr>
+<tr>
+<td>Ctrl+r</td>
+<td>重做上一动作</td>
+</tr>
+</tbody></table>
+<h3 id="命令模式-1"><a href="#命令模式-1" class="headerlink" title="命令模式"></a>命令模式</h3><h4 id="保存退出"><a href="#保存退出" class="headerlink" title="保存退出"></a>保存退出</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:w</td>
+<td>保存文档</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td>强制保存文档</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>退出 Vim</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>强制退出 Vim（不保存数据）</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td>:w &lt;filename&gt;</td>
+<td>将数据保存到另一个文档</td>
+</tr>
+<tr>
+<td>:r &lt;filename&gt;</td>
+<td>读入另一个文档的数据</td>
+</tr>
+<tr>
+<td>:n1, n2 w &lt;filename&gt;</td>
+<td>将 n1 到 n2 行内容保存到另一文档</td>
+</tr>
+<tr>
+<td>:! command</td>
+<td>在 vim 中执行命令行命令，并显示在 Vim 的底部命令行</td>
+</tr>
+</tbody></table>
+<h4 id="搜索替换"><a href="#搜索替换" class="headerlink" title="搜索替换"></a>搜索替换</h4><h5 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h5><ul>
+<li>&#x2F;word：向下搜索名为 word 的字符串</li>
+<li>?word：向上搜索名为 word 的字符串</li>
+</ul>
+<p>确定搜索后可以按 n 移动到下一个搜索到的字符串，N 移动到上一个搜索到字符串。</p>
+<p>上一个还是下一个取决于使用的是 <code>/</code> 还是 <code>?</code>。</p>
+<p>若是 <code>?</code>，则 <code>n</code> 为向上移动，<code>N</code> 为向下移动。</p>
+<p>若是 <code>/</code>，则 <code>n</code> 为向下移动，<code>N</code> 为向上移动。</p>
+<h5 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h5><p><code>:&#123;作用范围&#125;s/&#123;目标&#125;/&#123;替换&#125;/&#123;替换标志&#125;</code></p>
+<h6 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h6><p>作用范围有<strong>当前行</strong>、<strong>全文</strong>、<strong>区间</strong>三种。</p>
+<p><strong>当前行：</strong></p>
+<p>作用范围留空即表示当前行。</p>
+<p><code>:s/node/NODE/g</code></p>
+<p><strong>全文：</strong></p>
+<p>使用 <code>%</code> 即表示全文。</p>
+<p><code>:%s/node/NODE/g</code></p>
+<p><strong>区间：</strong></p>
+<p><code>n1,n2s/node/NODE/g</code></p>
+<p>n1，n2 为数字，表示从 n1 行到 n2 行。</p>
+<p>在可视模式下选中文本后，按下 <code>:</code> ，Vim会自动补全 <code>:&#39;&lt;,&#39;&gt;</code> 同样表示一个区间。</p>
+<h6 id="替换标志"><a href="#替换标志" class="headerlink" title="替换标志"></a>替换标志</h6><p>上面的命令末尾都带上了替换标志 <code>g</code>，它表示全局替换。默认只会替换一行中第一次出现的对应字符串。</p>
+<ul>
+<li>i：大小写不敏感</li>
+<li>I：大小写敏感</li>
+<li>c：替换前确认</li>
+</ul>
+<p>替换标志可以组合使用。如：</p>
+<p><code>:s/node/NODE/gI</code></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/Vim/">#Vim</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/02/18/Linux/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Linux</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2021</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TPCAD</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim"><span class="nav-number">1.</span> <span class="nav-text">Vim</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-NeoVim"><span class="nav-number">1.1.</span> <span class="nav-text">安装 NeoVim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Vim"><span class="nav-number">1.2.</span> <span class="nav-text">使用 Vim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">正常模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">插入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">命令模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.4.</span> <span class="nav-text">可视模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">1.3.</span> <span class="nav-text">按键说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E6%A8%A1%E5%BC%8F-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">正常模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">光标移动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E3%80%81%E7%B2%98%E8%B4%B4%E3%80%81%E5%88%A0%E9%99%A4"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">复制、粘贴、删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E9%80%80%E5%87%BA"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">保存退出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">搜索替换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2"><span class="nav-number">1.3.2.2.1.</span> <span class="nav-text">搜索</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.3.2.2.2.</span> <span class="nav-text">替换</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="nav-number">1.3.2.2.2.1.</span> <span class="nav-text">作用范围</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E6%A0%87%E5%BF%97"><span class="nav-number">1.3.2.2.2.2.</span> <span class="nav-text">替换标志</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>
