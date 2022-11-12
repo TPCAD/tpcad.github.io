@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="TPCAD">
+    
+    <title>
+        
+            MySQL 安装 |
+        
+        Eulamber
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.png">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#CC0000","avatar":"https://s1.ax1x.com/2022/03/09/bReWXd.png","favicon":"/images/logo.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"愿热情在风中永不熄灭"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Eulamber
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">MySQL 安装</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://s1.ax1x.com/2022/03/09/bReWXd.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TPCAD</span>
+                        
+                            <span class="author-label">厨力满满的安柏厨</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-11-07 20:28:00</span>
+        <span class="mobile">2022-11-07 20:28</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="MySQL-安装"><a href="#MySQL-安装" class="headerlink" title="MySQL 安装"></a>MySQL 安装</h1><h2 id="Ubuntu-下-MySQL-的安装"><a href="#Ubuntu-下-MySQL-的安装" class="headerlink" title="Ubuntu 下 MySQL 的安装"></a>Ubuntu 下 MySQL 的安装</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>更新仓库</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>从 Ubuntu 仓库安装 MySQL 8.0</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>验证是否安装</li>
+</ol>
+<p>安装好后 MySQL 会默认启动，可使用下列命令验证是否正确安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysql.service</span><br></pre></td></tr></table></figure>
+
+<p>若安装成功，并启动则会出现下图结果。</p>
+<img src="https://s1.ax1x.com/2022/11/07/xvcFqH.png" alt="active" style="zoom:80%">
+
+<p>若没有启动，可使用下列命令启动 MySQL。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mysql.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-MySQL"><a href="#配置-MySQL" class="headerlink" title="配置 MySQL"></a>配置 MySQL</h3><p>执行以下命令以对 MySQL 进行配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>设置 root 密码</li>
+</ol>
+<p>输出 ‘Using existing password for root’表示设置成功。</p>
+<img src="https://s1.ax1x.com/2022/11/07/xvgv36.png" alt="setpassword" style="zoom:80%">
+
+<p>上图最后提示是否需要修改密码，选择不需要。</p>
+<ol start="2">
+<li>其他设置</li>
+</ol>
+<p>接着依次是：“移除匿名用户(remove anonymous user)”，“禁止 root 远程登录(disallow root login remotely)”，“移除测试数据库及其访问(remove test database and access to it)”，“ 重新载入权限表(reload privilege tables now)”。<strong>每一项都同意即可</strong>。</p>
+<h3 id="本地登录-MySQL"><a href="#本地登录-MySQL" class="headerlink" title="本地登录 MySQL"></a>本地登录 MySQL</h3><p>设置完成后即可在登录 MySQL。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<h2 id="Windows-下-安装-MySQL"><a href="#Windows-下-安装-MySQL" class="headerlink" title="Windows 下 安装 MySQL"></a>Windows 下 安装 MySQL</h2><h2 id="远程连接-MySQL"><a href="#远程连接-MySQL" class="headerlink" title="远程连接 MySQL"></a>远程连接 MySQL</h2><p>当 MySQL 安装在 Linux 中时，可以在其他主机远程连接 MySQL。</p>
+<p>在刚刚的设置中，root 用户被设置成不允许远程连接，也不推荐远程连接 root 用户。安全的做法是创建一个新的用户，并将用户权限限制在某一个数据库上。</p>
+<h3 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h3><p><strong>以下 SQL 命令均在数据库 <code>mysql</code> 中执行。</strong></p>
+<p>MySQL 提供 <code>create user</code> 语句来创建新用户，其语法格式如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;hostname&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;password&#x27;</span>;</span><br><span class="line"><span class="comment">-- 例：create user alpha identified by 123</span></span><br></pre></td></tr></table></figure>
+
+<p><code>hostname</code> 可以用 <code>%</code> 表示所有主机地址。   </p>
+<p>若出现 “Your password does not satisfy the current policy requirements”错误，是因为密码强度太低，可以设置复杂点的密码</p>
+<p>也可以在 MySQL 执行以下命令，将需要的密码强度降低。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> validate_password.policy<span class="operator">=</span><span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>create user</code> 语句创建的用户只具有极少的权限。</p>
+<h3 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h3><p>MySQL 提供  <code>grant</code> 语句来为用户设置权限，其语法格式如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> privilege <span class="keyword">on</span> database.table <span class="keyword">to</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;hostname&#x27;</span>;</span><br><span class="line"><span class="comment">-- grant all on scoreDB.Score to &#x27;alpha&#x27;@&#x27;xxx.xx.xx.xxx&#x27;</span></span><br><span class="line"><span class="comment">-- 让用户 alpha 在 scoreDB 的 Score 表上拥有所有权限 </span></span><br></pre></td></tr></table></figure>
+
+<p><code>database</code> 与 <code>table</code> 可用 <code>*</code> 表示全部。<code>privilege</code> 可用 <code>all</code> 表示全部权限。</p>
+<h3 id="开放连接地址"><a href="#开放连接地址" class="headerlink" title="开放连接地址"></a>开放连接地址</h3><p>MySQL 默认只允许本地连接，需要先在配置文件中开放连接地址。</p>
+<p>配置文件地址：<code>/etc/mysql/mysql.conf.d/</code>。</p>
+<p>将 <code>mysqld.cnf</code> 中的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bind-address = 127.0.0.1</span><br><span class="line">mysqlx-bind-address = 127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p>注释掉。</p>
+<h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><p>MySQL 的默认端口为 3306，但被防火墙保护，需要先打开端口的防火墙。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开放端口</span></span><br><span class="line">sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld.service</span><br><span class="line"><span class="comment"># 检查端口是否开放</span></span><br><span class="line">sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启-MySQL"><a href="#重启-MySQL" class="headerlink" title="重启 MySQL"></a>重启 MySQL</h3><p>重启 MySQL 后即可进行远程连接。</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/11/13/HTML/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">HTML</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/09/17/Stack/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Stack</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2021</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TPCAD</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">MySQL 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu-%E4%B8%8B-MySQL-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">Ubuntu 下 MySQL 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-MySQL"><span class="nav-number">1.1.2.</span> <span class="nav-text">配置 MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%99%BB%E5%BD%95-MySQL"><span class="nav-number">1.1.3.</span> <span class="nav-text">本地登录 MySQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-%E4%B8%8B-%E5%AE%89%E8%A3%85-MySQL"><span class="nav-number">1.2.</span> <span class="nav-text">Windows 下 安装 MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5-MySQL"><span class="nav-number">1.3.</span> <span class="nav-text">远程连接 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建新用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%9D%83%E9%99%90"><span class="nav-number">1.3.2.</span> <span class="nav-text">设置权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E8%BF%9E%E6%8E%A5%E5%9C%B0%E5%9D%80"><span class="nav-number">1.3.3.</span> <span class="nav-text">开放连接地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.3.4.</span> <span class="nav-text">开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%90%AF-MySQL"><span class="nav-number">1.3.5.</span> <span class="nav-text">重启 MySQL</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>
