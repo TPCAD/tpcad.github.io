@@ -9,7 +9,7 @@
     
     <title>
         
-            CSS 开发技巧 |
+            正则表达式 |
         
         Eulamber
     </title>
@@ -146,7 +146,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">CSS 开发技巧</span>
+            <span class="title-hover-animation">正则表达式</span>
         </div>
 
         
@@ -165,8 +165,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-11-16 20:41:20</span>
-        <span class="mobile">2022-11-16 20:41</span>
+        <span class="pc">2023-01-27 16:00:08</span>
+        <span class="mobile">2023-01-27 16:00</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -174,7 +174,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Tips/">Tips</a>&nbsp;
+                        <a href="/categories/Note/">Note</a>&nbsp;
                     </li>
                 
             </ul>
@@ -186,11 +186,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/CSS/">CSS</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/HTML/">HTML</a>&nbsp;
+                        <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>&nbsp;
                     </li>
                 
             </ul>
@@ -209,15 +205,129 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="CSS-开发技巧"><a href="#CSS-开发技巧" class="headerlink" title="CSS 开发技巧"></a>CSS 开发技巧</h1><h2 id="盒子水平居中"><a href="#盒子水平居中" class="headerlink" title="盒子水平居中"></a>盒子水平居中</h2><ol>
-<li>必须是块级盒子</li>
-<li>必须指定宽度</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br></pre></td></tr></table></figure>
+            <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>参考文章：<a class="link"   target="_blank" rel="noopener" href="https://github.com/ziishaned/learn-regex/blob/master/translations/README-zh-simple.md" >learn-regex<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><p><strong>元字符</strong>是正则表达式中一些含有特殊含义的字符。</p>
+<table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">句号匹配任意单个字符除了换行符.</td>
+</tr>
+<tr>
+<td align="center">[ ]</td>
+<td align="center">字符种类. 匹配方括号内的任意字符.</td>
+</tr>
+<tr>
+<td align="center">[^ ]</td>
+<td align="center">否定的字符种类. 匹配除了方括号里的任意字符</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">匹配&gt;&#x3D;0个重复的在*号之前的字符.</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">匹配&gt;1个重复的+号前的字符.</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="center">标记?之前的字符为可选.</td>
+</tr>
+<tr>
+<td align="center">{n,m}</td>
+<td align="center">匹配num个中括号之前的字符 (n &lt;&#x3D; num &lt;&#x3D; m).</td>
+</tr>
+<tr>
+<td align="center">(xyz)</td>
+<td align="center">字符集, 匹配与 xyz 完全相等的字符串.</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">或运算符,匹配符号前或后的字符.</td>
+</tr>
+<tr>
+<td align="center">\</td>
+<td align="center">转义字符,用于匹配一些保留的字符 [ ] ( ) { } . * + ? ^ $ \ |</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">从开始行开始匹配.</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">从末端开始匹配.</td>
+</tr>
+</tbody></table>
+<h2 id="简写字符集"><a href="#简写字符集" class="headerlink" title="简写字符集"></a>简写字符集</h2><p>正则表达式提供了一些常用的字符集简写。</p>
+<table>
+<thead>
+<tr>
+<th align="center">简写</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">除了换行外的所有字符</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">等同于[a-zA-Z0-9_]</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="center">等同于[^\w]</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">等同于[0-9]</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">等同于[^\d]</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">匹配所有空格字符</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">匹配所有非空格字符</td>
+</tr>
+</tbody></table>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><p>修饰符可以修改表达式的搜索结果。修饰符可以任意组合使用。</p>
+<table>
+<thead>
+<tr>
+<th align="center">修饰符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">i</td>
+<td align="center">忽略大小写</td>
+</tr>
+<tr>
+<td align="center">g</td>
+<td align="center">全局搜索</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td align="center">多行匹配</td>
+</tr>
+</tbody></table>
+<h2 id="贪婪模式-x2F-懒惰模式"><a href="#贪婪模式-x2F-懒惰模式" class="headerlink" title="贪婪模式&#x2F;懒惰模式"></a>贪婪模式&#x2F;懒惰模式</h2><p>正则表达式默认会匹配尽可能多的字符，也就是贪婪模式。</p>
+<div align=center><img src="https://s1.ax1x.com/2023/01/27/pSUnUfO.png" style="zoom:70%"></div>
 
-<p>内联盒子和内联块盒子想要水平居中可以在父元素中添加 <code>text-align: center</code> 属性。</p>
-<h2 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h2><p>一些元素默认带有内外边距，而且不同的浏览器，默认值不同。在实际开发前一般会先清除元素的内外边距。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与贪婪模式相反的是<strong>懒惰模式</strong>。</p>
+<div align=center><img src="https://s1.ax1x.com/2023/01/27/pSUnw1e.png" style="zoom:70%"></div>
+
+<h2 id="b"><a href="#b" class="headerlink" title="\b"></a>\b</h2><p>详见：<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/tnt-33/p/10676473.html" >https://www.cnblogs.com/tnt-33/p/10676473.html<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -227,11 +337,7 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/CSS/">#CSS</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item">
-                        <a href="/tags/HTML/">#HTML</a>&nbsp;
+                        <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#正则表达式</a>&nbsp;
                     </li>
                 
             </ul>
@@ -243,13 +349,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/11/16/LinuxFileAndDirectoryManagement/"
+                           href="/2023/03/07/VueInstallation/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux 文件与目录管理</span>
+                                <span class="post-nav-title-item">Vue 安装</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -259,10 +365,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/11/13/JavaScript/"
+                           href="/2023/01/09/Markdown/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">JavaScript</span>
+                                <span class="post-nav-title-item">Markdown</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -374,7 +480,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">CSS 开发技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%92%E5%AD%90%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD"><span class="nav-number">1.1.</span> <span class="nav-text">盒子水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E5%86%85%E5%A4%96%E8%BE%B9%E8%B7%9D"><span class="nav-number">1.2.</span> <span class="nav-text">清除内外边距</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%86%99%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">简写字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F-x2F-%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">贪婪模式&#x2F;懒惰模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b"><span class="nav-number">1.5.</span> <span class="nav-text">\b</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
