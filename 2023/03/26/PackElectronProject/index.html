@@ -9,7 +9,7 @@
     
     <title>
         
-            CSS 开发技巧 |
+            PackElectronProject |
         
         Eulamber
     </title>
@@ -146,7 +146,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">CSS 开发技巧</span>
+            <span class="title-hover-animation">PackElectronProject</span>
         </div>
 
         
@@ -165,8 +165,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-11-16 20:41:20</span>
-        <span class="mobile">2022-11-16 20:41</span>
+        <span class="pc">2023-03-26 09:56:59</span>
+        <span class="mobile">2023-03-26 09:56</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -174,7 +174,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Tips/">Tips</a>&nbsp;
+                        <a href="/categories/Others/">Others</a>&nbsp;
                     </li>
                 
             </ul>
@@ -186,11 +186,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/HTML/">HTML</a>&nbsp;
+                        <a href="/tags/Electron/">Electron</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/CSS/">CSS</a>&nbsp;
+                        | <a href="/tags/Electron-Builder/">Electron-Builder</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/pnpm/">pnpm</a>&nbsp;
                     </li>
                 
             </ul>
@@ -209,15 +213,40 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="CSS-开发技巧"><a href="#CSS-开发技巧" class="headerlink" title="CSS 开发技巧"></a>CSS 开发技巧</h1><h2 id="盒子水平居中"><a href="#盒子水平居中" class="headerlink" title="盒子水平居中"></a>盒子水平居中</h2><ol>
-<li>必须是块级盒子</li>
-<li>必须指定宽度</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br></pre></td></tr></table></figure>
+            <h1 id="使用-pnpm-打包-Electron-项目"><a href="#使用-pnpm-打包-Electron-项目" class="headerlink" title="使用 pnpm 打包 Electron 项目"></a>使用 pnpm 打包 Electron 项目</h1><p>以打包 <code>massCode</code> 为例演示如何使用 <code>pnpm</code> 将 Electron 项目打包成各种 Linux 包。</p>
+<h2 id="安装-pnpm"><a href="#安装-pnpm" class="headerlink" title="安装 pnpm"></a>安装 pnpm</h2><p>首先确保已安装 <code>Node.js</code>。</p>
+<p>截至本文完成，pnpm 最新版本为 <code>7.30.3</code>，而 massCode 要求的 pnpm 版本为 <code>6.32.9～7</code>。</p>
+<p>使用 npm 安装 pnpm：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pnpm@6.35.1</span><br></pre></td></tr></table></figure>
 
-<p>内联盒子和内联块盒子想要水平居中可以在父元素中添加 <code>text-align: center</code> 属性。</p>
-<h2 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h2><p>一些元素默认带有内外边距，而且不同的浏览器，默认值不同。在实际开发前一般会先清除元素的内外边距。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检查是否安装成功：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载-massCode-源代码"><a href="#下载-massCode-源代码" class="headerlink" title="下载 massCode 源代码"></a>下载 massCode 源代码</h2><p>在 massCode 的 Github 仓库的 release 页面下载 massCode 的源代码并解压。</p>
+<h2 id="下载依赖"><a href="#下载依赖" class="headerlink" title="下载依赖"></a>下载依赖</h2><p>进入 massCode 源代码目录，执行以下命令安装所需依赖（可能有墙）。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm install</span><br></pre></td></tr></table></figure>
+
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>为了打包成指定的包格式，需要对配置文件进行相应调整。</p>
+<p>进入目录 <code>massCode-3.6.0/config</code>，编辑 <code>electron-builder.ts</code>。</p>
+<p>下面的代码指定了将项目打包成 <code>.snap</code> 格式。将需要的打包格式填入 <code>target</code> 中即可。具体配置可参考 <a class="link"   target="_blank" rel="noopener" href="https://www.electron.build/configuration/linux" >官方文档<i class="fas fa-external-link-alt"></i></a>。这里以 <code>.deb</code> 为例。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">linux</span>: &#123;</span><br><span class="line">    <span class="attr">target</span>: [<span class="string">&#x27;snap&#x27;</span>],</span><br><span class="line">    <span class="attr">icon</span>: <span class="string">&#x27;config/icons&#x27;</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>deb</code> 加入 <code>target</code> 中：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">linux</span>: &#123;</span><br><span class="line">    <span class="attr">target</span>: [<span class="string">&#x27;snap&#x27;</span>, <span class="string">&#x27;deb&#x27;</span>],</span><br><span class="line">    <span class="attr">icon</span>: <span class="string">&#x27;config/icons&#x27;</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>注意，因为 <code>deb</code> 包要求作者的 email，所以需要在 <code>massCode-3.6.0/package.json</code> 作者信息中添加作者的 email（如果不知道随便编一个就好）。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Anton Reshetov&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://github.com/antonreshetov&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 添加邮箱</span></span><br><span class="line">    <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;reshetov.art@gmail.com&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>配置完成后在源代码根目录执行以下命令进行打包：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm build</span><br></pre></td></tr></table></figure>
+
+<p>打包完成后会在根目录生成 <code>dist</code> 目录，打包好的安装包就在其中。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>本来是想找一个跨平台的代码片段管理工具，试了很多之后看中了 massCode，但 massCode 的作者只提供了 <code>snap</code> 格式的安装包，而 LinuxMint 上无法使用 snap（虽然可以开启），只能从源代码入手。</p>
+<p>在经过两三个小时的无意义检索后，终于在 massCode 仓库的 Discussions 页看到了这个</p>
+<img src="https://s1.ax1x.com/2023/03/26/ppr1cqS.png" alt="" style="zoom:80%">
+
+<p>然后就开始查找 pnpm 以及 electron-builder 相关内容，花了一小时左右终于将其打包成了 deb 包。</p>
+<p><del>本来就挺不喜欢 snap，现在更喜欢不起来了（虽然它并没有做错什么）。</del></p>
 
         </div>
 
@@ -227,11 +256,15 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/HTML/">#HTML</a>&nbsp;
+                        <a href="/tags/Electron/">#Electron</a>&nbsp;
                     </li>
                 
                     <li class="tag-item">
-                        <a href="/tags/CSS/">#CSS</a>&nbsp;
+                        <a href="/tags/Electron-Builder/">#Electron-Builder</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/pnpm/">#pnpm</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,29 +273,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/11/16/LinuxFileAndDirectoryManagement/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux 文件与目录管理</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/11/13/JavaScript/"
+                           href="/2023/03/14/VueBase/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">JavaScript</span>
+                                <span class="post-nav-title-item">Vue 基础</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -374,7 +392,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">CSS 开发技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%92%E5%AD%90%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD"><span class="nav-number">1.1.</span> <span class="nav-text">盒子水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E5%86%85%E5%A4%96%E8%BE%B9%E8%B7%9D"><span class="nav-number">1.2.</span> <span class="nav-text">清除内外边距</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-pnpm-%E6%89%93%E5%8C%85-Electron-%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">使用 pnpm 打包 Electron 项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-pnpm"><span class="nav-number">1.1.</span> <span class="nav-text">安装 pnpm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-massCode-%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">下载 massCode 源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.</span> <span class="nav-text">下载依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8C%85"><span class="nav-number">1.4.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">1.5.</span> <span class="nav-text">写在最后</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
