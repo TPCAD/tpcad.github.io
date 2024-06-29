@@ -6,21 +6,6 @@
     <description>Recent content on Eulamber</description>
     <generator>Hugo -- 0.128.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 29 Jun 2024 10:14:58 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Test</title>
-      <link>https://tpcad.github.io/posts/test/</link>
-      <pubDate>Sat, 29 Jun 2024 10:14:58 +0800</pubDate>
-      <guid>https://tpcad.github.io/posts/test/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hello</title>
-      <link>https://tpcad.github.io/posts/hello/</link>
-      <pubDate>Fri, 28 Jun 2024 22:50:25 +0800</pubDate>
-      <guid>https://tpcad.github.io/posts/hello/</guid>
-      <description>Hello Hugo Hello Hugo</description>
-    </item>
   </channel>
 </rss>
