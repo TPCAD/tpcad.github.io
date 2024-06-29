@@ -6,21 +6,17 @@
     <description>Recent content in Posts on Eulamber</description>
     <generator>Hugo -- 0.128.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 28 Jun 2024 23:13:22 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 29 Jun 2024 10:59:27 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
-      <link>https://tpcad.github.io/posts/test/</link>
-      <pubDate>Fri, 28 Jun 2024 23:13:22 +0800</pubDate>
-      <guid>https://tpcad.github.io/posts/test/</guid>
-      <description>Test </description>
-    </item>
-    <item>
-      <title>Hello</title>
-      <link>https://tpcad.github.io/posts/hello/</link>
-      <pubDate>Fri, 28 Jun 2024 22:50:25 +0800</pubDate>
-      <guid>https://tpcad.github.io/posts/hello/</guid>
-      <description>Hello Hugo Hello Hugo</description>
+      <title>Hugo &#43; Github Action，搭建个人博客</title>
+      <link>https://tpcad.github.io/posts/build_blog_with_hugo_and_github_action/</link>
+      <pubDate>Sat, 29 Jun 2024 10:59:27 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/build_blog_with_hugo_and_github_action/</guid>
+      <description>Hugo + Github Action，搭建个人博客 创建 Github 仓库 创建博客源仓库 博客源仓库用于对 Hugo 的配置文件以及 Markdown 源文件进行备份和管理，并配合 Github Action 自动将生成的静态网页推送到 Github Pages 仓库。
+创建 Github Pages 仓库 以 username.github.io 形式命名的特殊仓库，使用 Github Pages 实现部署网站。
+创建博客 hugo new site Blog Hugo 生成的目录结构。
+Blog ├── archetypes │ └── default.md ├── assets ├── content ├── data ├── hugo.toml ├── i18n ├── layouts ├── static └── themes 关联博客源仓库 cd Blog git init git remote add origin git@github.com:TPCAD/tpcad-blog.git 配置 Hugo 主题 为了方便对主题进行自定义和版本控制，我们将 Hugo 主题 fork 到自己的 Github 账户，并以 submodule 的方式将主题添加到我们的博客源仓库。</description>
     </item>
   </channel>
 </rss>

@@ -2,11 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tpcad.github.io/</loc>
+    <lastmod>2024-06-29T10:59:27+08:00</lastmod>
+  </url><url>
+    <loc>https://tpcad.github.io/posts/build_blog_with_hugo_and_github_action/</loc>
+    <lastmod>2024-06-29T10:59:27+08:00</lastmod>
+  </url><url>
+    <loc>https://tpcad.github.io/posts/</loc>
+    <lastmod>2024-06-29T10:59:27+08:00</lastmod>
+  </url><url>
     <loc>https://tpcad.github.io/archives/</loc>
   </url><url>
     <loc>https://tpcad.github.io/categories/</loc>
-  </url><url>
-    <loc>https://tpcad.github.io/</loc>
   </url><url>
     <loc>https://tpcad.github.io/search/</loc>
   </url><url>
