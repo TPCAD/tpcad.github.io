@@ -6,8 +6,17 @@
     <description>Recent content in Posts on Eulamber</description>
     <generator>Hugo -- 0.128.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 29 Jun 2024 10:59:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jul 2024 15:57:07 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust_smart_pointer</title>
+      <link>https://tpcad.github.io/posts/rust_smart_pointer/</link>
+      <pubDate>Tue, 02 Jul 2024 15:57:07 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/rust_smart_pointer/</guid>
+      <description>Smart Pointer in Rust Box Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。
+fn main() { let f1 = foo { bar: 32 }; let f2 = Box::new(foo { bar: 11 }); println!(&amp;#34;address on stack: {:p}&amp;#34;, &amp;amp;f1); println!(&amp;#34;address on heap: {:p}&amp;#34;, f2); println!(&amp;#34;address of box(on stack): {:p}&amp;#34;, &amp;amp;f2); } struct foo { bar: i32, } // address on stack: 0x7ffd34540f0c // address on heap: 0x57d39e669ba0 // address of box(on stack): 0x7ffd34540f10 Box 只提供了间接存储和堆分配，除此之外没有其他特殊功能。
+// 利用 Box 实现递归类型 enum List { Cons(i32, Box&amp;lt;List&amp;gt;), Nil, } use crate::List::{Cons, Nil}; fn main() { let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil)))))); } Deref Trait 实现 Deref trait 可以重载解引用运算符 *。</description>
+    </item>
     <item>
       <title>Hugo &#43; Github Action，搭建个人博客</title>
       <link>https://tpcad.github.io/posts/build_blog_with_hugo_and_github_action/</link>
