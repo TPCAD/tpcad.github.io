@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Algorithm on Eulamber</title>
+    <link>https://tpcad.github.io/tags/algorithm/</link>
+    <description>Recent content in Algorithm on Eulamber</description>
+    <generator>Hugo -- 0.128.1</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 02 Jul 2024 20:48:29 +0800</lastBuildDate>
+    <atom:link href="https://tpcad.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Classic Sort Algorithm</title>
+      <link>https://tpcad.github.io/posts/sort_algorithm/</link>
+      <pubDate>Tue, 02 Jul 2024 20:48:29 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/sort_algorithm/</guid>
+      <description>Classic Sort Algorithm Selection Sort 假设有数组 3, 4, 1, 9, 5, 8, 0。
+以升序为例，选择索引为 0 的元素，将它和其后的每一个元素比较，若所选元素较大，则交换二者位置。再选择索引为 1 的元素，将它和其后的每一个元素比较，若所选元素较大，则交换二者位置。依此类推，直至倒数第二个元素。
+// 第一轮 [0, 4, 3, 9, 5, 8, 1] // 第二轮，从索引为 1 的元素开始 [0, 1, 4, 9, 5, 8, 3] // 第三轮，从索引为 2 的元素开始 [0, 1, 3, 9, 5, 8, 4] // ... fn main() { let mut arr = [1, 2, 6, 3, 7, 3, 9, 4, 0]; for i in 0.</description>
+    </item>
+  </channel>
+</rss>
