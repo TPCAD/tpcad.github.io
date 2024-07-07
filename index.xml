@@ -6,8 +6,18 @@
     <description>Recent content on Eulamber</description>
     <generator>Hugo -- 0.128.2</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 03 Jul 2024 11:47:33 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jul 2024 15:00:42 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust Traits</title>
+      <link>https://tpcad.github.io/posts/rust_trait/</link>
+      <pubDate>Thu, 04 Jul 2024 15:00:42 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/rust_trait/</guid>
+      <description>Traits in Rust trait 定义了某个特定类型拥有可能与其他类型共享的功能。
+定义与实现 trait 定义 trait 一个 trait 体中可以有多个方法：一行一个方法签名且都以分号结尾。
+trait Area { fn area(&amp;amp;self) -&amp;gt; u32; } 为类型实现 trait 使用 impl for 为类型实现 trait。
+impl Area for Rectangle { fn area(&amp;amp;self) -&amp;gt; u32 { self.width * self.height } } impl Area for Circle { fn area(&amp;amp;self) -&amp;gt; u32 { 3 * self.radio * self.radio } } 默认实现 trait Summary { fn summarize(&amp;amp;self) -&amp;gt; String { String::from(&amp;#34;(Read more...)&amp;#34;); } } // 因为有默认实现，所以可以指定一个空 impl 块 impl Summary for Tweet {} trait 作为参数 通过将 trait 作为函数参数，可以使该参数支持任何实现了指定 trait 的类型。</description>
+    </item>
     <item>
       <title>Thread in Rust</title>
       <link>https://tpcad.github.io/posts/rust_thread/</link>
