@@ -6,8 +6,21 @@
     <description>Recent content on Eulamber</description>
     <generator>Hugo -- 0.128.2</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 04 Jul 2024 15:00:42 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jul 2024 20:54:19 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust Iterator</title>
+      <link>https://tpcad.github.io/posts/rust_iterator/</link>
+      <pubDate>Wed, 10 Jul 2024 20:54:19 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/rust_iterator/</guid>
+      <description>Rust Iterator 可迭代对象与迭代器（Iterable and Iterator） 迭代器（Iterator）是一种可以让你方便地遍历序列中每一个元素的工具。迭代器有两个重要的功能：
+记录当前的迭代状态 产生可以访问下一个元素的迭代器 可迭代对象（Iterable）是一种可以产生迭代器的对象。比如 Vec&amp;lt;T&amp;gt; 可以通过 iter 方法获得一个迭代器，但 Vec&amp;lt;T&amp;gt; 本省不是一个迭代器。
+一个可迭代对象通常有三个方法，分别对应三种迭代类型。
+iter()，迭代 &amp;amp;T iter_mut()，迭代 &amp;amp;mut T into_iter()，迭代 T Iterator Trait Rust 迭代器的核心是 Iterator trait。Iterator trait 的核心代码看起来像下面这样：
+trait Iterator { type Item; fn next(&amp;amp;mut self) -&amp;gt; Option&amp;lt;Self::Item&amp;gt;; } 关联类型 Item 表明迭代器返回的对象，next 方法表明迭代器如何返回该对象。
+实现 Iterator Trait 遍历 &amp;amp;T 假设有以下结构体，现在需要为 Todos 实现 Iterator trait。
+pub struct Todos { pub list: Vec&amp;lt;Todo&amp;gt;, } #[derive(Debug)] pub struct Todo { pub message: String, pub done: bool, } 实现 Iterator trait 的关键是记录当前的迭代状态。Todos 使用一个 Vec&amp;lt;T&amp;gt; 来进行存储，非常适合用索引来记录迭代状态。我们可以为 Todos 添加一个 index 字段来记录迭代状态。但很显然，这并不妥当。当你对 Todos 进行迭代时会修改 index 字段的值，如果想要再次进行迭代，就必须重置 index 字段，因为迭代器不会在迭代结束后重置状态。</description>
+    </item>
     <item>
       <title>Rust Traits</title>
       <link>https://tpcad.github.io/posts/rust_trait/</link>
