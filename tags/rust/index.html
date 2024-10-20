@@ -138,7 +138,7 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>在 Rust 中使用线程 线程基础 创建线程 使用 thread::spawn 创建线程，它接受一个 FnOnce 闭包。
+    <p>线程基础 创建线程 使用 thread::spawn 创建线程，它接受一个 FnOnce 闭包。
 use std::{thread, time::Duration}; fn main() { let handle = thread::spawn(|| { for i in 0..10 { println!(&#34;{i}: spawned thread echo&#34;); thread::sleep(Duration::from_millis(10)); } }); for i in 0..5 { println!(&#34;{i}: main thread echo&#34;); thread::sleep(Duration::from_millis(10)); } handle.join().unwrap(); } 等待线程结束 使用 join 方法等待线程结束。
 let handle = thread::spawn(|| { for i in 0..10 { println!(&#34;{i}: spawned thread echo&#34;); thread::sleep(Duration::from_millis(10)); } }); // 对 spawn 的返回值调用 join 方法 handle.join().unwrap(); move 闭包与线程 use std::thread; fn main() { let v = vec![1, 2, 3]; // 使用 move 获取所有权 let handle = thread::spawn(move || { println!(&#34;Here&#39;s a vector: {v:?}&#34;); }); handle.join().unwrap(); } 消息传递 Rust 通过**信道（channel）**实现消息传递。
 ...</p>
@@ -153,7 +153,7 @@ let handle = thread::spawn(|| { for i in 0..10 { println!(&#34;{i}: spawned thre
     </h2>
   </header>
   <div class="entry-content">
-    <p>Smart Pointer in Rust Box Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。
+    <p>Box&lt;T&gt; Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。
 fn main() { let f1 = foo { bar: 32 }; let f2 = Box::new(foo { bar: 11 }); println!(&#34;address on stack: {:p}&#34;, &amp;f1); println!(&#34;address on heap: {:p}&#34;, f2); println!(&#34;address of box(on stack): {:p}&#34;, &amp;f2); } struct foo { bar: i32, } // address on stack: 0x7ffd34540f0c // address on heap: 0x57d39e669ba0 // address of box(on stack): 0x7ffd34540f10 Box 只提供了间接存储和堆分配，除此之外没有其他特殊功能。
 // 利用 Box 实现递归类型 enum List { Cons(i32, Box&lt;List&gt;), Nil, } use crate::List::{Cons, Nil}; fn main() { let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil)))))); } Deref Trait 实现 Deref trait 可以重载解引用运算符 *。
 ...</p>

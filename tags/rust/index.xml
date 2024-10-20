@@ -13,8 +13,7 @@
       <link>https://tpcad.github.io/posts/rust_thread/</link>
       <pubDate>Wed, 03 Jul 2024 11:47:33 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/rust_thread/</guid>
-      <description>&lt;h1 id=&#34;在-rust-中使用线程&#34;&gt;在 Rust 中使用线程&lt;/h1&gt;
-&lt;h2 id=&#34;线程基础&#34;&gt;线程基础&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;线程基础&#34;&gt;线程基础&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;创建线程&lt;/li&gt;
 &lt;/ul&gt;
@@ -72,8 +71,7 @@
       <link>https://tpcad.github.io/posts/rust_smart_pointer/</link>
       <pubDate>Tue, 02 Jul 2024 15:57:07 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/rust_smart_pointer/</guid>
-      <description>&lt;h1 id=&#34;smart-pointer-in-rust&#34;&gt;Smart Pointer in Rust&lt;/h1&gt;
-&lt;h2 id=&#34;boxt&#34;&gt;Box&lt;!-- raw HTML omitted --&gt;&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;boxt&#34;&gt;&lt;code&gt;Box&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; f1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; foo { bar: &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt; };

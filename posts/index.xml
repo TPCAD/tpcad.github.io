@@ -6,15 +6,44 @@
     <description>Recent content in Posts on Eulamber</description>
     <generator>Hugo -- 0.136.2</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 12 Aug 2024 17:46:57 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2024 09:59:27 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>虚拟内存</title>
+      <link>https://tpcad.github.io/posts/os_virtual_memory/</link>
+      <pubDate>Sun, 20 Oct 2024 09:59:27 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/os_virtual_memory/</guid>
+      <description>&lt;p&gt;为了隔离不同进程所使用的地址，操作系统为每个进程分配了一套 &lt;strong&gt;虚拟地址&lt;/strong&gt;。各个进程的虚拟内存互相独立，互不干扰，同时，进程也不允许直接访问物理地址。虚拟内存可以让程序访问超出物理内存大小的地址。在 32 位处理器中，虚拟内存的大小为 &lt;code&gt;4 GB（2^32）&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;分页&#34;&gt;分页&lt;/h2&gt;
+&lt;p&gt;分页机制将虚拟内存分为一个个大小固定的单元，称为 &lt;strong&gt;页（Page）&lt;/strong&gt;。同样的，也将物理内存分为一个个 &lt;strong&gt;页框（Page Frame）&lt;/strong&gt;。页和页框的大小相等，通常为 &lt;strong&gt;4 KB&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;页表&#34;&gt;页表&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;页表&lt;/strong&gt; 的作用是把页 &lt;strong&gt;映射&lt;/strong&gt; 为页框。从数学角度说，页表是一个函数，它的参数是虚拟页号，结果是物理页框号。&lt;/p&gt;
+&lt;p&gt;每一个进程都有自己的页表，页表也存储在内存中，是一个由页表项组成的数组。&lt;/p&gt;
+&lt;h4 id=&#34;页表项&#34;&gt;页表项&lt;/h4&gt;
+&lt;p&gt;在 32 位操作系统中，一个页表项的大小为 4 字节。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;page_entry_t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    u8 present : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;  &lt;span style=&#34;color:#75715e&#34;&gt;// 在内存中
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 write : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;    &lt;span style=&#34;color:#75715e&#34;&gt;// 0 只读，1 可读可写
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 user : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;     &lt;span style=&#34;color:#75715e&#34;&gt;// 1 所有人，0 超级用户 DPL &amp;lt; 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 pwt : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;      &lt;span style=&#34;color:#75715e&#34;&gt;// page write through，1 直写模式，0 回写模式
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 pcd : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;      &lt;span style=&#34;color:#75715e&#34;&gt;// page cache disable，禁止该页缓冲
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 accessed : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// 被访问过，用于统计使用频率
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 dirty : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;    &lt;span style=&#34;color:#75715e&#34;&gt;// 脏页，表示该页缓冲被写过
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 pat : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;      &lt;span style=&#34;color:#75715e&#34;&gt;// page attribute table，页大小 4K / 4M
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 global : &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;   &lt;span style=&#34;color:#75715e&#34;&gt;// 全局，所有进程都会用到了，该页不刷新缓冲
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u8 ignored : &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;;  &lt;span style=&#34;color:#75715e&#34;&gt;// 操作系统决定是否使用
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    u32 index : &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;;  &lt;span style=&#34;color:#75715e&#34;&gt;// 页索引
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;} _packed &lt;span style=&#34;color:#66d9ef&#34;&gt;page_entry_t&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;地址转换&#34;&gt;地址转换&lt;/h4&gt;
+&lt;p&gt;在 32 位操作系统中，虚拟内存大小为 4 GB（$2^{32}$），页面大小通常为 4 KB。由此可知，虚拟内存被划分为 1 M（$2^{20}$） 个页面。因此，32 位的虚拟地址中前 20 位表示页索引，剩下 12 位则表示页内偏移量。利用页索引在页表中查找到对应的页框号后，将其与页内偏移量相加即可得到物理地址。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How Perfect Forwarding Works</title>
       <link>https://tpcad.github.io/posts/cpp_perfect_forwarding.md/</link>
       <pubDate>Mon, 12 Aug 2024 17:46:57 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/cpp_perfect_forwarding.md/</guid>
-      <description>&lt;h1 id=&#34;完美转发&#34;&gt;完美转发&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;转发&lt;/strong&gt;指的是函数之间的参数传递。比如下面的代码，函数 &lt;code&gt;foo&lt;/code&gt; 向函数 &lt;code&gt;bar&lt;/code&gt; 传递了参数 &lt;code&gt;a&lt;/code&gt;。&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;转发&lt;/strong&gt; 指的是函数之间的参数传递。比如下面的代码，函数 &lt;code&gt;foo&lt;/code&gt; 向函数 &lt;code&gt;bar&lt;/code&gt; 传递了参数 &lt;code&gt;a&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;bar&lt;/span&gt;(a)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
@@ -154,8 +183,7 @@
       <link>https://tpcad.github.io/posts/rust_thread/</link>
       <pubDate>Wed, 03 Jul 2024 11:47:33 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/rust_thread/</guid>
-      <description>&lt;h1 id=&#34;在-rust-中使用线程&#34;&gt;在 Rust 中使用线程&lt;/h1&gt;
-&lt;h2 id=&#34;线程基础&#34;&gt;线程基础&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;线程基础&#34;&gt;线程基础&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;创建线程&lt;/li&gt;
 &lt;/ul&gt;
@@ -256,8 +284,7 @@
       <link>https://tpcad.github.io/posts/rust_smart_pointer/</link>
       <pubDate>Tue, 02 Jul 2024 15:57:07 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/rust_smart_pointer/</guid>
-      <description>&lt;h1 id=&#34;smart-pointer-in-rust&#34;&gt;Smart Pointer in Rust&lt;/h1&gt;
-&lt;h2 id=&#34;boxt&#34;&gt;Box&lt;!-- raw HTML omitted --&gt;&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;boxt&#34;&gt;&lt;code&gt;Box&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; f1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; foo { bar: &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt; };
@@ -294,8 +321,7 @@
       <link>https://tpcad.github.io/posts/build_blog_with_hugo_and_github_action/</link>
       <pubDate>Sat, 29 Jun 2024 10:59:27 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/build_blog_with_hugo_and_github_action/</guid>
-      <description>&lt;h1 id=&#34;hugo--github-action搭建个人博客&#34;&gt;Hugo + Github Action，搭建个人博客&lt;/h1&gt;
-&lt;h2 id=&#34;创建-github-仓库&#34;&gt;创建 Github 仓库&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;创建-github-仓库&#34;&gt;创建 Github 仓库&lt;/h2&gt;
 &lt;h3 id=&#34;创建博客源仓库&#34;&gt;创建博客源仓库&lt;/h3&gt;
 &lt;p&gt;博客源仓库用于对 Hugo 的配置文件以及 Markdown 源文件进行备份和管理，并配合 Github Action 自动将生成的静态网页推送到 Github Pages 仓库。&lt;/p&gt;
 &lt;h3 id=&#34;创建-github-pages-仓库&#34;&gt;创建 Github Pages 仓库&lt;/h3&gt;
