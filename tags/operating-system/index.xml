@@ -6,8 +6,71 @@
     <description>Recent content in Operating System on Eulamber</description>
     <generator>Hugo -- 0.136.5</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 20 Oct 2024 09:59:27 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 21 Oct 2024 08:25:27 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/tags/operating-system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>进程基础</title>
+      <link>https://tpcad.github.io/posts/os_process_basic/</link>
+      <pubDate>Mon, 21 Oct 2024 08:25:27 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/os_process_basic/</guid>
+      <description>&lt;h2 id=&#34;进程&#34;&gt;进程&lt;/h2&gt;
+&lt;h3 id=&#34;进程的状态&#34;&gt;进程的状态&lt;/h3&gt;
+&lt;p&gt;一个进程至少有三种基本状态，即就绪、运行、阻塞状态。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;stateDiagram-v2
+    Ready --&amp;gt; Running
+    Running --&amp;gt; Ready
+    Running --&amp;gt; Blocked
+    Blocked --&amp;gt; Ready
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;就绪状态（Ready）：获得时间片后即可运行&lt;/li&gt;
+&lt;li&gt;运行状态（Running）：运行状态，进程正在占用 CPU&lt;/li&gt;
+&lt;li&gt;阻塞状态（Blocked）：进程正在等待某一事件发生，即使拥有 CPU 也无法运行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;三种状态之间会因为以下原因发生切换：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;就绪状态 -&amp;gt; 运行状态&lt;/em&gt;：被调度程序选中，获得时间片，开始运行&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;运行状态 -&amp;gt; 就绪状态&lt;/em&gt;：时间片用完&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;运行状态 -&amp;gt; 阻塞状态&lt;/em&gt;：进程请求某个事件且必须等待，如 I/O 事件&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;阻塞状态 -&amp;gt; 就绪状态&lt;/em&gt;：进程请求的事件发生&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了以上三种状态外，进程还有两种基本的状态：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建状态（New）：进程正在被创建时的状态&lt;/li&gt;
+&lt;li&gt;结束状态（Exit）：进程结束时的状态&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;此外，当进程被阻塞时，可以将该进程相关的内存换出到磁盘中，这种进程存在但没有占据实际物理内存的状态称为「挂起状态」。挂起状态又可以分为 &lt;strong&gt;就绪挂起状态&lt;/strong&gt; 和 &lt;strong&gt;阻塞挂起状态&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;进程控制块&#34;&gt;进程控制块&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;进程控制块&lt;/strong&gt;（Process Control Block，PCB）是用来进程的数据结构，每个进程对应一个 PCB，PCB 是进程存在的唯一标识。&lt;/p&gt;
+&lt;p&gt;PCB 通常包含以下信息：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;进程描述信息：
+&lt;ul&gt;
+&lt;li&gt;进程标识符：每个进程都有一个唯一的标识符&lt;/li&gt;
+&lt;li&gt;用户标识符：进程所属用户&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;进程控制、管理信息：
+&lt;ul&gt;
+&lt;li&gt;进程状态：进程当前状态&lt;/li&gt;
+&lt;li&gt;进程优先级：进程调度时的优先级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;分配的资源
+&lt;ul&gt;
+&lt;li&gt;进程虚拟地址空间&lt;/li&gt;
+&lt;li&gt;进程打开的文件列表&lt;/li&gt;
+&lt;li&gt;I/O 设备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CPU 信息
+&lt;ul&gt;
+&lt;li&gt;寄存器的值，如 &lt;code&gt;eip&lt;/code&gt;，&lt;code&gt;esp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;线程&#34;&gt;线程&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;线程&lt;/strong&gt; 是进程当中的一条执行流程。当进程只有一个线程时，可以认为进程就是线程。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>虚拟内存</title>
       <link>https://tpcad.github.io/posts/os_virtual_memory/</link>

@@ -157,6 +157,25 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">进程基础
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>进程 进程的状态 一个进程至少有三种基本状态，即就绪、运行、阻塞状态。
+stateDiagram-v2 Ready --&gt; Running Running --&gt; Ready Running --&gt; Blocked Blocked --&gt; Ready 就绪状态（Ready）：获得时间片后即可运行 运行状态（Running）：运行状态，进程正在占用 CPU 阻塞状态（Blocked）：进程正在等待某一事件发生，即使拥有 CPU 也无法运行 三种状态之间会因为以下原因发生切换：
+就绪状态 -&gt; 运行状态：被调度程序选中，获得时间片，开始运行 运行状态 -&gt; 就绪状态：时间片用完 运行状态 -&gt; 阻塞状态：进程请求某个事件且必须等待，如 I/O 事件 阻塞状态 -&gt; 就绪状态：进程请求的事件发生 除了以上三种状态外，进程还有两种基本的状态：
+创建状态（New）：进程正在被创建时的状态 结束状态（Exit）：进程结束时的状态 此外，当进程被阻塞时，可以将该进程相关的内存换出到磁盘中，这种进程存在但没有占据实际物理内存的状态称为「挂起状态」。挂起状态又可以分为 就绪挂起状态 和 阻塞挂起状态。
+进程控制块 进程控制块（Process Control Block，PCB）是用来进程的数据结构，每个进程对应一个 PCB，PCB 是进程存在的唯一标识。
+PCB 通常包含以下信息：
+进程描述信息： 进程标识符：每个进程都有一个唯一的标识符 用户标识符：进程所属用户 进程控制、管理信息： 进程状态：进程当前状态 进程优先级：进程调度时的优先级 分配的资源 进程虚拟地址空间 进程打开的文件列表 I/O 设备 CPU 信息 寄存器的值，如 eip，esp 线程 线程 是进程当中的一条执行流程。当进程只有一个线程时，可以认为进程就是线程。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-10-21 08:25:27 +0800 +0800'>October 21, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <a class="entry-link" aria-label="post link to 进程基础" href="https://tpcad.github.io/posts/os_process_basic/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">虚拟内存
     </h2>
   </header>
@@ -229,6 +248,23 @@ pub struct Todos { pub list: Vec&lt;Todo&gt;, } #[derive(Debug)] pub struct Todo
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">TCP 基础
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TCP 首部 --- title: &#34;TCP Packet&#34; --- packet-beta 0-15: &#34;源端口号&#34; 16-31: &#34;目的端口号&#34; 32-63: &#34;序列号&#34; 64-95: &#34;确认应答号&#34; 96-99: &#34;数据偏移量&#34; 100-105: &#34;保留&#34; 106: &#34;URG&#34; 107: &#34;ACK&#34; 108: &#34;PSH&#34; 109: &#34;RST&#34; 110: &#34;SYN&#34; 111: &#34;FIN&#34; 112-127: &#34;窗口&#34; 128-143: &#34;校验和&#34; 144-159: &#34;紧急指针&#34; 160-191: &#34;选项（长度可变）&#34; 序列号：TCP 是面向字节流的，其传输的每一个数据字节都对应一个序列号。序列号的初始值是一个随机数，每发送一次 TCP 报文序列号都会累加一次报文的数据字节数
+确认应答号：下一次期望收到的数据的序列号
+数据偏移量：数据部分的偏移量，也就是首部的长度。单位为 4 字节。因此 TCP 首部最长为 $(2^4-1)*4=60$ 字节。
+控制位：
+ACK：该位为 1 时表示确认应答字段有效，除最初建立连接时的 SYN 包外该位必须置 1 RST：该位为 1 时表示 TCP 连接出现异常必须强制断开连接 SYN：该位为 1 时表示希望建立 TCP 连接，并在其序列号字段确定序列号初始值 FIN：该位为 1 时表示今后不会再有数据发送，希望断开 TCP 连接 TCP 连接 三次握手 建立一个 TCP 连接需要经过三次握手过程。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-07 09:03:08 +0800 +0800'>July 7, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <a class="entry-link" aria-label="post link to TCP 基础" href="https://tpcad.github.io/posts/net_tcp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Rust Traits
     </h2>
   </header>
@@ -286,22 +322,12 @@ fn main() { let f1 = foo { bar: 32 }; let f2 = Box::new(foo { bar: 11 }); printl
   <footer class="entry-footer"><span title='2024-07-02 15:57:07 +0800 +0800'>July 2, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
   <a class="entry-link" aria-label="post link to Rust Smart Pointer" href="https://tpcad.github.io/posts/rust_smart_pointer/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hugo &#43; Github Action，搭建个人博客
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>创建 Github 仓库 创建博客源仓库 博客源仓库用于对 Hugo 的配置文件以及 Markdown 源文件进行备份和管理，并配合 Github Action 自动将生成的静态网页推送到 Github Pages 仓库。
-创建 Github Pages 仓库 以 username.github.io 形式命名的特殊仓库，使用 Github Pages 实现部署网站。
-创建博客 hugo new site Blog Hugo 生成的目录结构。
-Blog ├── archetypes │ └── default.md ├── assets ├── content ├── data ├── hugo.toml ├── i18n ├── layouts ├── static └── themes 关联博客源仓库 cd Blog git init git remote add origin git@github.com:TPCAD/tpcad-blog.git 配置 Hugo 主题 为了方便对主题进行自定义和版本控制，我们将 Hugo 主题 fork 到自己的 Github 账户，并以 submodule 的方式将主题添加到我们的博客源仓库。
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-06-29 10:59:27 +0800 +0800'>June 29, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
-  <a class="entry-link" aria-label="post link to Hugo &#43; Github Action，搭建个人博客" href="https://tpcad.github.io/posts/build_blog_with_hugo_and_github_action/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://tpcad.github.io/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">
