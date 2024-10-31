@@ -91,7 +91,29 @@ Bubble Sort
         }
 
     </style>
-</noscript><meta property="og:title" content="Classic Sort Algorithm" />
+</noscript>{
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>{-   -}}
+
+const config = {
+    startOnLoad:true,
+    theme: 'forest',
+    themeVariables: {
+        lineColor: "#fafafa"    
+    },
+    flowchart: {
+        useMaxWidth:false,
+        htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+
+
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+<meta property="og:title" content="Classic Sort Algorithm" />
 <meta property="og:description" content="Selection Sort
 以升序为例，选择排序的思想是遍历未排序元素，选择其中最小的元素，将其移动到未排序元素开始位置。
 性质
@@ -793,6 +815,7 @@ Bubble Sort
 </span></span></code></pre></div>
 
   </div>
+
 
   <footer class="post-footer">
     <ul class="post-tags">

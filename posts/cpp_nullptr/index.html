@@ -71,7 +71,29 @@ nullptr 可以取代 NULL 的所有场景。">
         }
 
     </style>
-</noscript><meta property="og:title" content="How Nullptr Works" />
+</noscript>{
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>{-   -}}
+
+const config = {
+    startOnLoad:true,
+    theme: 'forest',
+    themeVariables: {
+        lineColor: "#fafafa"    
+    },
+    flowchart: {
+        useMaxWidth:false,
+        htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+
+
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+<meta property="og:title" content="How Nullptr Works" />
 <meta property="og:description" content="为什么需要 nullptr
 在 C 中，NULL 被定义为 (void*)0 或 0。而 C&#43;&#43; 因为不允许直接将 void* 隐式转换到其他类型，所以在没有 nullptr 之前，C&#43;&#43; 的 NULL 就是 0（也可能是 0L）。这导致 0 的二义性。
 0 的二义性给函数重载带来了混乱。考虑下面的代码，如果 NULL 被定义为 0，那么 foo(NULL) 会严格匹配 foo(int)，但如果 NULL 被定义为 0，那么将不存在严格匹配，而 0L 可以同时转换为 int 和 int*，编译器无法知道应该调用哪个函数。
@@ -311,6 +333,7 @@ nullptr 可以取代 NULL 的所有场景。"/>
 
 
   </div>
+
 
   <footer class="post-footer">
     <ul class="post-tags">

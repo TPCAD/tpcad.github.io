@@ -106,7 +106,29 @@ Rust 通过**信道（channel）**实现消息传递。">
         }
 
     </style>
-</noscript><meta property="og:title" content="Thread in Rust" />
+</noscript>{
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>{-   -}}
+
+const config = {
+    startOnLoad:true,
+    theme: 'forest',
+    themeVariables: {
+        lineColor: "#fafafa"    
+    },
+    flowchart: {
+        useMaxWidth:false,
+        htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+
+
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+<meta property="og:title" content="Thread in Rust" />
 <meta property="og:description" content="线程基础
 
 创建线程
@@ -505,6 +527,7 @@ trait 释放锁。</p>
 </span></span></code></pre></div>
 
   </div>
+
 
   <footer class="post-footer">
     <ul class="post-tags">

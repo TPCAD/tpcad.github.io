@@ -86,7 +86,29 @@ trait 作为参数
         }
 
     </style>
-</noscript><meta property="og:title" content="Rust Traits" />
+</noscript>{
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>{-   -}}
+
+const config = {
+    startOnLoad:true,
+    theme: 'forest',
+    themeVariables: {
+        lineColor: "#fafafa"    
+    },
+    flowchart: {
+        useMaxWidth:false,
+        htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+
+
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+<meta property="og:title" content="Rust Traits" />
 <meta property="og:description" content="Traits in Rust
 trait 定义了某个特定类型拥有可能与其他类型共享的功能。
 定义与实现 trait
@@ -613,6 +635,7 @@ trait 作为参数
 </span></span></code></pre></div>
 
   </div>
+
 
   <footer class="post-footer">
     <ul class="post-tags">

@@ -16,12 +16,14 @@
       <description>&lt;h2 id=&#34;进程&#34;&gt;进程&lt;/h2&gt;
 &lt;h3 id=&#34;进程的状态&#34;&gt;进程的状态&lt;/h3&gt;
 &lt;p&gt;一个进程至少有三种基本状态，即就绪、运行、阻塞状态。&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;stateDiagram-v2
-    Ready --&amp;gt; Running
-    Running --&amp;gt; Ready
-    Running --&amp;gt; Blocked
-    Blocked --&amp;gt; Ready
-&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;div class=&#34;mermaid&#34;&gt;stateDiagram-v2
+    Ready --&gt; Running
+    Running --&gt; Ready
+    Running --&gt; Blocked
+    Blocked --&gt; Ready
+&lt;/div&gt;
+
+&lt;ol&gt;
 &lt;li&gt;就绪状态（Ready）：获得时间片后即可运行&lt;/li&gt;
 &lt;li&gt;运行状态（Running）：运行状态，进程正在占用 CPU&lt;/li&gt;
 &lt;li&gt;阻塞状态（Blocked）：进程正在等待某一事件发生，即使拥有 CPU 也无法运行&lt;/li&gt;
@@ -69,7 +71,8 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;线程&#34;&gt;线程&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;线程&lt;/strong&gt; 是进程当中的一条执行流程。当进程只有一个线程时，可以认为进程就是线程。&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;线程&lt;/strong&gt; 是进程当中的一条执行流程。当进程只有一个线程时，可以认为进程就是线程。&lt;/p&gt;
+&lt;p&gt;线程与进程十分相似，同样拥有就绪、运行、阻塞等状态，也通过 TCB（Thread Control Block）描述。线程共享进程的数据段、代码段、文件等资源，只独享寄存器、栈等资源。进程是资源分配的基本单位，线程是调度的基本单位。&lt;/p&gt;</description>
     </item>
     <item>
       <title>虚拟内存</title>

@@ -78,7 +78,29 @@ typedef struct page_entry_t
         }
 
     </style>
-</noscript><meta property="og:title" content="虚拟内存" />
+</noscript>{
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>{-   -}}
+
+const config = {
+    startOnLoad:true,
+    theme: 'forest',
+    themeVariables: {
+        lineColor: "#fafafa"    
+    },
+    flowchart: {
+        useMaxWidth:false,
+        htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+
+
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+<meta property="og:title" content="虚拟内存" />
 <meta property="og:description" content="为了隔离不同进程所使用的地址，操作系统为每个进程分配了一套 虚拟地址。各个进程的虚拟内存互相独立，互不干扰，同时，进程也不允许直接访问物理地址。虚拟内存可以让程序访问超出物理内存大小的地址。在 32 位处理器中，虚拟内存的大小为 4 GB（2^32）。
 分页
 分页机制将虚拟内存分为一个个大小固定的单元，称为 页（Page）。同样的，也将物理内存分为一个个 页框（Page Frame）。页和页框的大小相等，通常为 4 KB。
@@ -391,6 +413,7 @@ typedef struct page_entry_t
 
 
   </div>
+
 
   <footer class="post-footer">
     <ul class="post-tags">

@@ -79,7 +79,29 @@ git remote add origin git@github.com:TPCAD/tpcad-blog.git
         }
 
     </style>
-</noscript><meta property="og:title" content="Hugo &#43; Github Action，搭建个人博客" />
+</noscript>{
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>{-   -}}
+
+const config = {
+    startOnLoad:true,
+    theme: 'forest',
+    themeVariables: {
+        lineColor: "#fafafa"    
+    },
+    flowchart: {
+        useMaxWidth:false,
+        htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+
+
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+<meta property="og:title" content="Hugo &#43; Github Action，搭建个人博客" />
 <meta property="og:description" content="创建 Github 仓库
 创建博客源仓库
 博客源仓库用于对 Hugo 的配置文件以及 Markdown 源文件进行备份和管理，并配合 Github Action 自动将生成的静态网页推送到 Github Pages 仓库。
@@ -408,6 +430,7 @@ git remote add origin git@github.com:TPCAD/tpcad-blog.git
 
 
   </div>
+
 
   <footer class="post-footer">
     <ul class="post-tags">

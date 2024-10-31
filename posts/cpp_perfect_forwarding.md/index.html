@@ -88,7 +88,29 @@ int main() {
         }
 
     </style>
-</noscript><meta property="og:title" content="How Perfect Forwarding Works" />
+</noscript>{
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>{-   -}}
+
+const config = {
+    startOnLoad:true,
+    theme: 'forest',
+    themeVariables: {
+        lineColor: "#fafafa"    
+    },
+    flowchart: {
+        useMaxWidth:false,
+        htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+
+
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+<meta property="og:title" content="How Perfect Forwarding Works" />
 <meta property="og:description" content="转发 指的是函数之间的参数传递。比如下面的代码，函数 foo 向函数 bar 传递了参数 a。
 foo(int a) {
     bar(a)
@@ -457,6 +479,7 @@ int main() {
 </span></span></span></code></pre></div>
 
   </div>
+
 
   <footer class="post-footer">
     <ul class="post-tags">
