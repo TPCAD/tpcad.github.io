@@ -171,6 +171,21 @@ window.onload = () => {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Rust Smart Pointer
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Box&lt;T&gt; Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。
+fn main() { let f1 = foo { bar: 32 }; let f2 = Box::new(foo { bar: 11 }); println!(&#34;address on stack: {:p}&#34;, &amp;f1); println!(&#34;address on heap: {:p}&#34;, f2); println!(&#34;address of box(on stack): {:p}&#34;, &amp;f2); } struct foo { bar: i32, } // address on stack: 0x7ffd34540f0c // address on heap: 0x57d39e669ba0 // address of box(on stack): 0x7ffd34540f10 Box 只提供了间接存储和堆分配，除此之外没有其他特殊功能。
+// 利用 Box 实现递归类型 enum List { Cons(i32, Box&lt;List&gt;), Nil, } use crate::List::{Cons, Nil}; fn main() { let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil)))))); } Deref Trait 实现 Deref trait 可以重载解引用运算符 *。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-02 15:57:07 +0800 +0800'>July 2, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <a class="entry-link" aria-label="post link to Rust Smart Pointer" href="https://tpcad.github.io/posts/rust_smart_pointer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hugo &#43; Github Action，搭建个人博客
     </h2>
   </header>

@@ -156,6 +156,20 @@ window.onload = () => {
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">二叉搜索树
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>二叉搜索树（Binary Search Tree），又叫二叉排序树，二叉查找树，是一种高效的数据结构。
+二叉搜索树定义 空树是二叉搜索树 若左子树不空，则左子树上所有节点的值都 小于 根节点的值 若右子树不空，则右子树上所有节点的值都 大于 根节点的值 二叉搜索树的左右子树也是二叉搜索树 节点定义 template &lt;typename T&gt; struct binary_search_tree { private: struct bs_node { public: T key; unsigned int size; unsigned int count; bs_node *left; bs_node *right; bs_node(const T &amp;value) : key(value), size(1), count(1), left(nullptr), right(nullptr) {} }; bs_node *root; public: binary_search_tree() : root(nullptr) {} binary_search_tree(const T &amp;value) : root(nullptr) { root = new bs_node(value); } binary_search_tree(std::initializer_list&lt;T&gt; list) : root(nullptr) { root = new bs_node(*list.begin()); std::for_each(list.begin() &#43; 1, list.end(), [this](auto &amp;&amp;x) { this-&gt;insert(x); }); } 遍历二叉搜索树 根据二叉搜索树的定义，中序遍历得到的序列是升序序列。因为要遍历所有节点，所以时间复杂度为 $O(n)$。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-11-13 16:22:15 +0800 +0800'>November 13, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <a class="entry-link" aria-label="post link to 二叉搜索树" href="https://tpcad.github.io/posts/algorithm_bstree.md/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Classic Sort Algorithm
     </h2>
   </header>

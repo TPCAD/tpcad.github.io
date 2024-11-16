@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tree on Eulamber</title>
+    <link>https://tpcad.github.io/tags/tree/</link>
+    <description>Recent content in Tree on Eulamber</description>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 13 Nov 2024 16:22:15 +0800</lastBuildDate>
+    <atom:link href="https://tpcad.github.io/tags/tree/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>二叉搜索树</title>
+      <link>https://tpcad.github.io/posts/algorithm_bstree.md/</link>
+      <pubDate>Wed, 13 Nov 2024 16:22:15 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/algorithm_bstree.md/</guid>
+      <description>&lt;p&gt;二叉搜索树（Binary Search Tree），又叫二叉排序树，二叉查找树，是一种高效的数据结构。&lt;/p&gt;
+&lt;h2 id=&#34;二叉搜索树定义&#34;&gt;二叉搜索树定义&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;空树是二叉搜索树&lt;/li&gt;
+&lt;li&gt;若左子树不空，则左子树上所有节点的值都 &lt;strong&gt;小于&lt;/strong&gt; 根节点的值&lt;/li&gt;
+&lt;li&gt;若右子树不空，则右子树上所有节点的值都 &lt;strong&gt;大于&lt;/strong&gt; 根节点的值&lt;/li&gt;
+&lt;li&gt;二叉搜索树的左右子树也是二叉搜索树&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;节点定义&#34;&gt;节点定义&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;binary_search_tree&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;bs_node&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        T key;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; size;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; count;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        bs_node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;left;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        bs_node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;right;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        bs_node(&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; T &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;value)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; key(value), size(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;), count(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;), left(&lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;), right(&lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;) {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    bs_node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;root;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    binary_search_tree() &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; root(&lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;) {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    binary_search_tree(&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; T &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;value) &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; root(&lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; bs_node(value);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    binary_search_tree(std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;initializer_list&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; list) &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; root(&lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; bs_node(&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;list.begin());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;for_each(list.begin() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, list.end(),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      [&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;](&lt;span style=&#34;color:#66d9ef&#34;&gt;auto&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;x) { &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;insert(x); });
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;遍历二叉搜索树&#34;&gt;遍历二叉搜索树&lt;/h2&gt;
+&lt;p&gt;根据二叉搜索树的定义，中序遍历得到的序列是升序序列。因为要遍历所有节点，所以时间复杂度为 $O(n)$。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
