@@ -486,10 +486,10 @@ packet-beta
 <p>当接收端收到乱序的数据报时（序列号比确认号大）会在 <code>ACK</code> 报文中加上 <code>SACK</code> 选项以告知发送端已接收的部分。发送端在触发快速重传时根据确认号和 <code>SACK</code> 选项得知丢失的数据部分并重传该部分。</p>
 <h4 id="sack-选项"><code>SACK</code> 选项<a hidden class="anchor" aria-hidden="true" href="#sack-选项">#</a></h4>
 <p><code>SACK</code> 选项包含两个选项。</p>
-<ol>
+<ul>
 <li><code>SACK-Permitted</code> 选项
 该选项只能出现在 <code>SYN</code> 报文中，在连接建立时告知对方自己支持 <code>SACK</code>。选项格式如下：</li>
-</ol>
+</ul>
 <div class="mermaid">---
 title: "SACK-Permitted"
 ---
@@ -498,10 +498,10 @@ packet-beta
 9-15: "Length=2"
 </div>
 
-<ol start="2">
+<ul>
 <li><code>SACK</code> 选项
 该选项通过范围表示已经接收到的数据，不连续的部分就是丢失的数据。</li>
-</ol>
+</ul>
 <div class="mermaid">---
 title: "SACK"
 ---
@@ -594,7 +594,7 @@ $$</p>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#960050;background-color:#1e0010">有数据要发送</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#960050;background-color:#1e0010">可用窗口大小</span> <span style="color:#f92672">&gt;=</span> MSS <span style="color:#f92672">&amp;&amp;</span> <span style="color:#960050;background-color:#1e0010">可发送的数据</span> <span style="color:#f92672">&gt;=</span> MSS {
-</span></span><span style="display:flex;"><span>    	<span style="color:#960050;background-color:#1e0010">立刻发送</span>MSS大小的数据
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">立刻发送</span>MSS大小的数据
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#960050;background-color:#1e0010">有未确认的数据</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">将数据放入缓存等待接收</span> ACK

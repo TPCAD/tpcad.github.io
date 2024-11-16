@@ -346,9 +346,9 @@ packet-beta
     </item>
     <item>
       <title>Classic Sort Algorithm</title>
-      <link>https://tpcad.github.io/posts/sort_algorithm/</link>
+      <link>https://tpcad.github.io/posts/algorithm_sort/</link>
       <pubDate>Tue, 02 Jul 2024 20:48:29 +0800</pubDate>
-      <guid>https://tpcad.github.io/posts/sort_algorithm/</guid>
+      <guid>https://tpcad.github.io/posts/algorithm_sort/</guid>
       <description>&lt;h2 id=&#34;selection-sort&#34;&gt;Selection Sort&lt;/h2&gt;
 &lt;p&gt;以升序为例，选择排序的思想是遍历未排序元素，选择其中最小的元素，将其移动到未排序元素开始位置。&lt;/p&gt;
 &lt;h3 id=&#34;性质&#34;&gt;性质&lt;/h3&gt;
