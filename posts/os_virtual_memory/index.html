@@ -33,7 +33,7 @@ typedef struct page_entry_t
 在 32 位操作系统中，虚拟内存大小为 4 GB（$2^{32}$），页面大小通常为 4 KB。由此可知，虚拟内存被划分为 1 M（$2^{20}$） 个页面。因此，32 位的虚拟地址中前 20 位表示页索引，剩下 12 位则表示页内偏移量。利用页索引在页表中查找到对应的页框号后，将其与页内偏移量相加即可得到物理地址。">
 <meta name="author" content="TPCAD">
 <link rel="canonical" href="https://tpcad.github.io/posts/os_virtual_memory/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://tpcad.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://tpcad.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://tpcad.github.io/favicon-32x32.png">
@@ -100,38 +100,23 @@ window.onload = () => {
     window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
 }
 </script>
-<meta property="og:title" content="虚拟内存" />
-<meta property="og:description" content="为了隔离不同进程所使用的地址，操作系统为每个进程分配了一套 虚拟地址。各个进程的虚拟内存互相独立，互不干扰，同时，进程也不允许直接访问物理地址。虚拟内存可以让程序访问超出物理内存大小的地址。在 32 位处理器中，虚拟内存的大小为 4 GB（2^32）。
-分页
-分页机制将虚拟内存分为一个个大小固定的单元，称为 页（Page）。同样的，也将物理内存分为一个个 页框（Page Frame）。页和页框的大小相等，通常为 4 KB。
-页表
-页表 的作用是把页 映射 为页框。从数学角度说，页表是一个函数，它的参数是虚拟页号，结果是物理页框号。
+<meta property="og:url" content="https://tpcad.github.io/posts/os_virtual_memory/">
+  <meta property="og:site_name" content="Eulamber">
+  <meta property="og:title" content="虚拟内存">
+  <meta property="og:description" content="为了隔离不同进程所使用的地址，操作系统为每个进程分配了一套 虚拟地址。各个进程的虚拟内存互相独立，互不干扰，同时，进程也不允许直接访问物理地址。虚拟内存可以让程序访问超出物理内存大小的地址。在 32 位处理器中，虚拟内存的大小为 4 GB（2^32）。
+分页 分页机制将虚拟内存分为一个个大小固定的单元，称为 页（Page）。同样的，也将物理内存分为一个个 页框（Page Frame）。页和页框的大小相等，通常为 4 KB。
+页表 页表 的作用是把页 映射 为页框。从数学角度说，页表是一个函数，它的参数是虚拟页号，结果是物理页框号。
 每一个进程都有自己的页表，页表也存储在内存中，是一个由页表项组成的数组。
-页表项
-在 32 位操作系统中，一个页表项的大小为 4 字节。
-typedef struct page_entry_t
-{
-    u8 present : 1;  // 在内存中
-    u8 write : 1;    // 0 只读，1 可读可写
-    u8 user : 1;     // 1 所有人，0 超级用户 DPL &lt; 3
-    u8 pwt : 1;      // page write through，1 直写模式，0 回写模式
-    u8 pcd : 1;      // page cache disable，禁止该页缓冲
-    u8 accessed : 1; // 被访问过，用于统计使用频率
-    u8 dirty : 1;    // 脏页，表示该页缓冲被写过
-    u8 pat : 1;      // page attribute table，页大小 4K / 4M
-    u8 global : 1;   // 全局，所有进程都会用到了，该页不刷新缓冲
-    u8 ignored : 3;  // 操作系统决定是否使用
-    u32 index : 20;  // 页索引
-} _packed page_entry_t;
-地址转换
-在 32 位操作系统中，虚拟内存大小为 4 GB（$2^{32}$），页面大小通常为 4 KB。由此可知，虚拟内存被划分为 1 M（$2^{20}$） 个页面。因此，32 位的虚拟地址中前 20 位表示页索引，剩下 12 位则表示页内偏移量。利用页索引在页表中查找到对应的页框号后，将其与页内偏移量相加即可得到物理地址。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://tpcad.github.io/posts/os_virtual_memory/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-10-20T09:59:27+08:00" />
-<meta property="article:modified_time" content="2024-10-20T09:59:27+08:00" /><meta property="og:site_name" content="Eulamber" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="虚拟内存"/>
+页表项 在 32 位操作系统中，一个页表项的大小为 4 字节。
+typedef struct page_entry_t { u8 present : 1; // 在内存中 u8 write : 1; // 0 只读，1 可读可写 u8 user : 1; // 1 所有人，0 超级用户 DPL &lt; 3 u8 pwt : 1; // page write through，1 直写模式，0 回写模式 u8 pcd : 1; // page cache disable，禁止该页缓冲 u8 accessed : 1; // 被访问过，用于统计使用频率 u8 dirty : 1; // 脏页，表示该页缓冲被写过 u8 pat : 1; // page attribute table，页大小 4K / 4M u8 global : 1; // 全局，所有进程都会用到了，该页不刷新缓冲 u8 ignored : 3; // 操作系统决定是否使用 u32 index : 20; // 页索引 } _packed page_entry_t; 地址转换 在 32 位操作系统中，虚拟内存大小为 4 GB（$2^{32}$），页面大小通常为 4 KB。由此可知，虚拟内存被划分为 1 M（$2^{20}$） 个页面。因此，32 位的虚拟地址中前 20 位表示页索引，剩下 12 位则表示页内偏移量。利用页索引在页表中查找到对应的页框号后，将其与页内偏移量相加即可得到物理地址。">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-10-20T09:59:27+08:00">
+    <meta property="article:modified_time" content="2024-10-20T09:59:27+08:00">
+    <meta property="article:tag" content="Operating System">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="虚拟内存">
 <meta name="twitter:description" content="为了隔离不同进程所使用的地址，操作系统为每个进程分配了一套 虚拟地址。各个进程的虚拟内存互相独立，互不干扰，同时，进程也不允许直接访问物理地址。虚拟内存可以让程序访问超出物理内存大小的地址。在 32 位处理器中，虚拟内存的大小为 4 GB（2^32）。
 分页
 分页机制将虚拟内存分为一个个大小固定的单元，称为 页（Page）。同样的，也将物理内存分为一个个 页框（Page Frame）。页和页框的大小相等，通常为 4 KB。
@@ -155,7 +140,7 @@ typedef struct page_entry_t
     u32 index : 20;  // 页索引
 } _packed page_entry_t;
 地址转换
-在 32 位操作系统中，虚拟内存大小为 4 GB（$2^{32}$），页面大小通常为 4 KB。由此可知，虚拟内存被划分为 1 M（$2^{20}$） 个页面。因此，32 位的虚拟地址中前 20 位表示页索引，剩下 12 位则表示页内偏移量。利用页索引在页表中查找到对应的页框号后，将其与页内偏移量相加即可得到物理地址。"/>
+在 32 位操作系统中，虚拟内存大小为 4 GB（$2^{32}$），页面大小通常为 4 KB。由此可知，虚拟内存被划分为 1 M（$2^{20}$） 个页面。因此，32 位的虚拟地址中前 20 位表示页索引，剩下 12 位则表示页内偏移量。利用页索引在页表中查找到对应的页框号后，将其与页内偏移量相加即可得到物理地址。">
 
 
 <script type="application/ld+json">
@@ -346,8 +331,7 @@ typedef struct page_entry_t
 </span></span></code></pre></div><h4 id="地址转换">地址转换<a hidden class="anchor" aria-hidden="true" href="#地址转换">#</a></h4>
 <p>在 32 位操作系统中，虚拟内存大小为 4 GB（$2^{32}$），页面大小通常为 4 KB。由此可知，虚拟内存被划分为 1 M（$2^{20}$） 个页面。因此，32 位的虚拟地址中前 20 位表示页索引，剩下 12 位则表示页内偏移量。利用页索引在页表中查找到对应的页框号后，将其与页内偏移量相加即可得到物理地址。</p>
 <p>不难发现，页内偏移量的位数与页面大小有关，即当页面大小为 $2^k$ B 时，页内偏移量的位数为 k 位。</p>
-<p><img loading="lazy" src="https://cdn.xiaolincoding.com//mysql/other/7884f4d8db4949f7a5bb4bbd0f452609.png" alt="page addressing"  />
-</p>
+<p><img alt="page addressing" loading="lazy" src="https://cdn.xiaolincoding.com//mysql/other/7884f4d8db4949f7a5bb4bbd0f452609.png"></p>
 <p>因为页表必须覆盖整个虚拟内存，当一个页表项的大小为 4 B 时，那么页表大小则是 4 MB，若此时有 100 个进程，则需要 400 MB 的内存，这是非常大的浪费。</p>
 <h3 id="多级页表">多级页表<a hidden class="anchor" aria-hidden="true" href="#多级页表">#</a></h3>
 <p>多级页表可以有效地节约内存。下面以二级页表为例。</p>
@@ -359,8 +343,7 @@ typedef struct page_entry_t
 <li>根据虚拟地址中间 10 位在二级页表中查找页框号</li>
 <li>将页框号与页内偏移量相加得到物理地址</li>
 </ol>
-<p><img loading="lazy" src="https://cdn.xiaolincoding.com//mysql/other/19296e249b2240c29f9c52be70f611d5.png" alt="multilevel page"  />
-</p>
+<p><img alt="multilevel page" loading="lazy" src="https://cdn.xiaolincoding.com//mysql/other/19296e249b2240c29f9c52be70f611d5.png"></p>
 <p>因为一级页号和二级页号的位数都是 10 位，所以一级页表和每个二级页表都有 $2^{10}$ 项，若每项大小为 4 B，则页表大小为 4 KB。</p>
 <p>若将所有页表都加载到内存中，二级页表所占用的总内存大小为 4 KB（一级页表）+ 4 MB（所有二级页表），反而比单页表还要大。然而，根据局部性原理，对于大部分程序来说，其使用的空间远远不到 4 GB，因此会存在许多空的页表项。对于二级页表，一级页表就已经可以完整地表示 4 GB 的虚拟地址空间，而二级页表可以在需要时才创建。如此一来，实际加载到内存的页表就只有 4 KB 的一级页表和需要用到的二级页表，最坏的情况也是加载所有的二级页表（几乎不可能），因此，二级页表可以有效地节约内存空间。</p>
 <p>无论是单页表还是多级页表，页表都要覆盖全部的虚拟地址空间。如果虚拟地址在页表中没有对应的页表项，计算机就不能工作了。与单页表每个页表项表示 4 KB 内存，需要 100 万个页表项相比，二级页表将页表项进行「压缩」，使一个页表项（一级页表项）可以表示 4 MB，因此只需 1024 个一级页表项就可以表示 4 GB 的虚拟内存空间。</p>
@@ -381,8 +364,7 @@ typedef struct page_entry_t
 <p>相应地，LDT 被存储于 ldtr 中。</p>
 <h3 id="段描述符">段描述符<a hidden class="anchor" aria-hidden="true" href="#段描述符">#</a></h3>
 <p>段描述符是描述符表的元素，用于描述一个内存中的一个段。段描述符主要存储了段的基址、限长以及一些属性位。</p>
-<p><img loading="lazy" src="https://habrastorage.org/r/w1560/storage1/c46ddde2/3ff7d2f3/6af3408f/0d65fa31.jpg" alt="segment descriptor"  />
-</p>
+<p><img alt="segment descriptor" loading="lazy" src="https://habrastorage.org/r/w1560/storage1/c46ddde2/3ff7d2f3/6af3408f/0d65fa31.jpg"></p>
 <h3 id="段选择子">段选择子<a hidden class="anchor" aria-hidden="true" href="#段选择子">#</a></h3>
 <p>段选择子（segment selector）是一个 2 字节大小的数据结构，用于定位段描述符，通常保存在段寄存器中。段选择子的结构如下所示：</p>
 <ul>

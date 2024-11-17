@@ -46,7 +46,7 @@ Bubble Sort
 以升序为例，在未排序元素中依次比较相邻两个元素，若乱序则交换两个元素，这样一来较大的元素就会被慢慢移动到末尾有序排列。通常在冒泡排序中设置一个 flag，当没有发生交换操作时，说明数组已经有序，停止遍历。">
 <meta name="author" content="TPCAD">
 <link rel="canonical" href="https://tpcad.github.io/posts/algorithm_sort/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://tpcad.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://tpcad.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://tpcad.github.io/favicon-32x32.png">
@@ -113,51 +113,19 @@ window.onload = () => {
     window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
 }
 </script>
-<meta property="og:title" content="Classic Sort Algorithm" />
-<meta property="og:description" content="Selection Sort
-以升序为例，选择排序的思想是遍历未排序元素，选择其中最小的元素，将其移动到未排序元素开始位置。
-性质
-
-最好时间复杂度：$O(n^2)$
-最坏时间复杂度：$O(n^2)$
-平均时间复杂度：$O(n^2)$
-稳定性：不稳定
-
-演示
-// 原数组，所有元素均位于未排序部分
-[3, 4, 1, 9, 5, 8, 0]
-// 第一轮，遍历未排序部分，选择最小的元素（0），移动到未排序部分开始位置
-// 有序部分位于数组头部
-[0, 4, 3, 9, 5, 8, 1]
-// 第二轮，遍历未排序部分，选择最小的元素（1），移动到未排序部分开始位置
-[0, 1, 4, 9, 5, 8, 3]
-// 第三轮，遍历未排序部分，选择最小的元素（3），移动到未排序部分开始位置
-[0, 1, 3, 9, 5, 8, 4]
-// ...
-示例代码
-void selection_sort(int *arr, int len) {
-    for (int i = 0; i &lt; len - 1; &#43;&#43;i) {
-        int min_idx = i;
-        int j = i &#43; 1;
-        for (; j &lt; len; &#43;&#43;j) {
-            if (arr[min_idx] &gt; arr[j]) {
-                min_idx = j; // 记录索引位置
-            }
-        }
-        if (min_idx != i) {
-            swap(&amp;arr[i], &amp;arr[min_idx]);
-        }
-    }
-}
-Bubble Sort
-以升序为例，在未排序元素中依次比较相邻两个元素，若乱序则交换两个元素，这样一来较大的元素就会被慢慢移动到末尾有序排列。通常在冒泡排序中设置一个 flag，当没有发生交换操作时，说明数组已经有序，停止遍历。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://tpcad.github.io/posts/algorithm_sort/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-07-02T20:48:29+08:00" />
-<meta property="article:modified_time" content="2024-07-02T20:48:29+08:00" /><meta property="og:site_name" content="Eulamber" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Classic Sort Algorithm"/>
+<meta property="og:url" content="https://tpcad.github.io/posts/algorithm_sort/">
+  <meta property="og:site_name" content="Eulamber">
+  <meta property="og:title" content="Classic Sort Algorithm">
+  <meta property="og:description" content="Selection Sort 以升序为例，选择排序的思想是遍历未排序元素，选择其中最小的元素，将其移动到未排序元素开始位置。
+性质 最好时间复杂度：$O(n^2)$ 最坏时间复杂度：$O(n^2)$ 平均时间复杂度：$O(n^2)$ 稳定性：不稳定 演示 // 原数组，所有元素均位于未排序部分 [3, 4, 1, 9, 5, 8, 0] // 第一轮，遍历未排序部分，选择最小的元素（0），移动到未排序部分开始位置 // 有序部分位于数组头部 [0, 4, 3, 9, 5, 8, 1] // 第二轮，遍历未排序部分，选择最小的元素（1），移动到未排序部分开始位置 [0, 1, 4, 9, 5, 8, 3] // 第三轮，遍历未排序部分，选择最小的元素（3），移动到未排序部分开始位置 [0, 1, 3, 9, 5, 8, 4] // ... 示例代码 void selection_sort(int *arr, int len) { for (int i = 0; i &lt; len - 1; &#43;&#43;i) { int min_idx = i; int j = i &#43; 1; for (; j &lt; len; &#43;&#43;j) { if (arr[min_idx] &gt; arr[j]) { min_idx = j; // 记录索引位置 } } if (min_idx != i) { swap(&amp;arr[i], &amp;arr[min_idx]); } } } Bubble Sort 以升序为例，在未排序元素中依次比较相邻两个元素，若乱序则交换两个元素，这样一来较大的元素就会被慢慢移动到末尾有序排列。通常在冒泡排序中设置一个 flag，当没有发生交换操作时，说明数组已经有序，停止遍历。">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-02T20:48:29+08:00">
+    <meta property="article:modified_time" content="2024-07-02T20:48:29+08:00">
+    <meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Classic Sort Algorithm">
 <meta name="twitter:description" content="Selection Sort
 以升序为例，选择排序的思想是遍历未排序元素，选择其中最小的元素，将其移动到未排序元素开始位置。
 性质
@@ -194,7 +162,7 @@ void selection_sort(int *arr, int len) {
     }
 }
 Bubble Sort
-以升序为例，在未排序元素中依次比较相邻两个元素，若乱序则交换两个元素，这样一来较大的元素就会被慢慢移动到末尾有序排列。通常在冒泡排序中设置一个 flag，当没有发生交换操作时，说明数组已经有序，停止遍历。"/>
+以升序为例，在未排序元素中依次比较相邻两个元素，若乱序则交换两个元素，这样一来较大的元素就会被慢慢移动到末尾有序排列。通常在冒泡排序中设置一个 flag，当没有发生交换操作时，说明数组已经有序，停止遍历。">
 
 
 <script type="application/ld+json">
