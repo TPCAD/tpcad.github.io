@@ -157,6 +157,23 @@ window.onload = () => {
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Algorithm_avltree
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>平衡二叉树是一种平衡的二叉搜索树。
+空树是平衡二叉树 左右子树的高度差的绝对值不超过 1 左右子树也是平衡二叉树 AVL 树是一种平衡二叉树，它会在插入或删除节点时调整二叉树使每个节点的左右子树的高度差的绝对值不超过 1。通常把左右子树的差叫做 平衡因子。即
+$$ 平衡因子 = 左子树的高度 - 右子树的高度 $$
+节点定义 AVL 树的节点与二叉搜索树类似，但多了一个 height 字段，用于保存当前节点的高度。规定空树的高度为 0，非空树的高度等于它的最大层次（其根节点的层次为 1，依次类推）。
+struct avl_tree { private: struct avl_node { public: T key; unsigned size; unsigned count; unsigned height; avl_node *left; avl_node *right; avl_node(const T &amp;value) : key(value), size(1), count(1), height(1), left(nullptr), right(nullptr) {} }; avl_node *root; public: avl_tree() : root(nullptr) {} avl_tree(const T &amp;value) : root(nullptr) { root = new avl_node(value); } avl_tree(std::initializer_list&lt;T&gt; list) : root(nullptr) { root = new avl_node(*list.begin()); std::for_each(list.begin() &#43; 1, list.end(), [this](auto &amp;&amp;x) { this-&gt;insert(x); }); } } 平衡 在插入或删除节点时可能会导致 AVL 树不平衡，即平衡因子的绝对值大于 1，此时便需要通过 旋转 操作使二叉树再次平衡。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-11-22 08:24:44 +0800 +0800'>November 22, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <a class="entry-link" aria-label="post link to Algorithm_avltree" href="https://tpcad.github.io/posts/algorithm_avltree/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">二叉搜索树
     </h2>
   </header>
@@ -166,7 +183,7 @@ window.onload = () => {
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2024-11-13 16:22:15 +0800 +0800'>November 13, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
-  <a class="entry-link" aria-label="post link to 二叉搜索树" href="https://tpcad.github.io/posts/algorithm_bstree.md/"></a>
+  <a class="entry-link" aria-label="post link to 二叉搜索树" href="https://tpcad.github.io/posts/algorithm_bstree/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
