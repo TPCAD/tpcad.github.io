@@ -54,7 +54,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;平衡&#34;&gt;平衡&lt;/h2&gt;
-&lt;p&gt;在插入或删除节点时可能会导致 AVL 树不平衡，即平衡因子的绝对值大于 1，此时便需要通过 &lt;strong&gt;旋转&lt;/strong&gt; 操作使二叉树再次平衡。&lt;/p&gt;</description>
+&lt;h3 id=&#34;旋转&#34;&gt;旋转&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;旋转&lt;/strong&gt; 是一种将节点变成它的子节点的节点的操作，可以分为 &lt;strong&gt;左旋&lt;/strong&gt; 和 &lt;strong&gt;右旋&lt;/strong&gt;。关于旋转方向的定义有很多，甚至有些相互矛盾。这里规定，&lt;/p&gt;</description>
     </item>
     <item>
       <title>二叉搜索树</title>
