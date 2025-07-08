@@ -135,6 +135,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Rust Traits
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>trait 定义了某个特定类型拥有可能与其他类型共享的功能。
+定义与实现 trait 定义 trait 一个 trait 体中可以有多个方法：一行一个方法签名且都以分号结尾。
+trait Area { fn area(&amp;self) -&gt; u32; } 为类型实现 trait 使用 impl for 为类型实现 trait。
+impl Area for Rectangle { fn area(&amp;self) -&gt; u32 { self.width * self.height } } impl Area for Circle { fn area(&amp;self) -&gt; u32 { 3 * self.radio * self.radio } } 默认实现 trait Summary { fn summarize(&amp;self) -&gt; String { String::from(&#34;(Read more...)&#34;); } } // 因为有默认实现，所以可以指定一个空 impl 块 impl Summary for Tweet {} trait 作为参数 通过将 trait 作为函数参数，可以使该参数支持任何实现了指定 trait 的类型。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-04 15:00:42 +0800 +0800'>July 4, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <a class="entry-link" aria-label="post link to Rust Traits" href="https://tpcad.github.io/posts/rust_trait/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Thread in Rust
     </h2>
   </header>
@@ -144,7 +160,7 @@ use std::{thread, time::Duration}; fn main() { let handle = thread::spawn(|| { f
 let handle = thread::spawn(|| { for i in 0..10 { println!(&#34;{i}: spawned thread echo&#34;); thread::sleep(Duration::from_millis(10)); } }); // 对 spawn 的返回值调用 join 方法 handle.join().unwrap(); move 闭包与线程 use std::thread; fn main() { let v = vec![1, 2, 3]; // 使用 move 获取所有权 let handle = thread::spawn(move || { println!(&#34;Here&#39;s a vector: {v:?}&#34;); }); handle.join().unwrap(); } 消息传递 Rust 通过**信道（channel）**实现消息传递。
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-07-03 11:47:33 +0800 CST'>July 3, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <footer class="entry-footer"><span title='2024-07-03 11:47:33 +0800 +0800'>July 3, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
   <a class="entry-link" aria-label="post link to Thread in Rust" href="https://tpcad.github.io/posts/rust_thread/"></a>
 </article>
 
@@ -159,7 +175,7 @@ fn main() { let f1 = foo { bar: 32 }; let f2 = Box::new(foo { bar: 11 }); printl
 // 利用 Box 实现递归类型 enum List { Cons(i32, Box&lt;List&gt;), Nil, } use crate::List::{Cons, Nil}; fn main() { let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil)))))); } Deref Trait 实现 Deref trait 可以重载解引用运算符 *。
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-07-02 15:57:07 +0800 CST'>July 2, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
+  <footer class="entry-footer"><span title='2024-07-02 15:57:07 +0800 +0800'>July 2, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
   <a class="entry-link" aria-label="post link to Rust Smart Pointer" href="https://tpcad.github.io/posts/rust_smart_pointer/"></a>
 </article>
     </main>

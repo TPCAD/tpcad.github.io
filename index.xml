@@ -504,8 +504,7 @@ packet-beta
       <link>https://tpcad.github.io/posts/rust_trait/</link>
       <pubDate>Thu, 04 Jul 2024 15:00:42 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/rust_trait/</guid>
-      <description>&lt;h1 id=&#34;traits-in-rust&#34;&gt;Traits in Rust&lt;/h1&gt;
-&lt;p&gt;trait 定义了某个特定类型拥有可能与其他类型共享的功能。&lt;/p&gt;
+      <description>&lt;p&gt;trait 定义了某个特定类型拥有可能与其他类型共享的功能。&lt;/p&gt;
 &lt;h2 id=&#34;定义与实现-trait&#34;&gt;定义与实现 trait&lt;/h2&gt;
 &lt;h3 id=&#34;定义-trait&#34;&gt;定义 trait&lt;/h3&gt;
 &lt;p&gt;一个 trait 体中可以有多个方法：一行一个方法签名且都以分号结尾。&lt;/p&gt;

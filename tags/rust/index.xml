@@ -6,8 +6,45 @@
     <description>Recent content in Rust on Eulamber</description>
     <generator>Hugo -- 0.147.9</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 03 Jul 2024 11:47:33 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jul 2024 15:00:42 +0800</lastBuildDate>
     <atom:link href="https://tpcad.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust Traits</title>
+      <link>https://tpcad.github.io/posts/rust_trait/</link>
+      <pubDate>Thu, 04 Jul 2024 15:00:42 +0800</pubDate>
+      <guid>https://tpcad.github.io/posts/rust_trait/</guid>
+      <description>&lt;p&gt;trait 定义了某个特定类型拥有可能与其他类型共享的功能。&lt;/p&gt;
+&lt;h2 id=&#34;定义与实现-trait&#34;&gt;定义与实现 trait&lt;/h2&gt;
+&lt;h3 id=&#34;定义-trait&#34;&gt;定义 trait&lt;/h3&gt;
+&lt;p&gt;一个 trait 体中可以有多个方法：一行一个方法签名且都以分号结尾。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;trait&lt;/span&gt; Area {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;area&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#e78284&#34;&gt;u32&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;为类型实现-trait&#34;&gt;为类型实现 trait&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;impl for&lt;/code&gt; 为类型实现 trait。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;impl&lt;/span&gt; Area &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; Rectangle {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;area&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#e78284&#34;&gt;u32&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;.width &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;.height
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;impl&lt;/span&gt; Area &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; Circle {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;area&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#e78284&#34;&gt;u32&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ef9f76&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;.radio &lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;.radio
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;默认实现&#34;&gt;默认实现&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;trait&lt;/span&gt; Summary {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ca9ee6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;summarize&lt;/span&gt;(&lt;span style=&#34;color:#99d1db;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#99d1db&#34;&gt;self&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#99d1db&#34;&gt;String&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#99d1db&#34;&gt;String&lt;/span&gt;::from(&lt;span style=&#34;color:#a6d189&#34;&gt;&amp;#34;(Read more...)&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;// 因为有默认实现，所以可以指定一个空 impl 块
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#737994;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;impl&lt;/span&gt; Summary &lt;span style=&#34;color:#ca9ee6&#34;&gt;for&lt;/span&gt; Tweet {}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;trait-作为参数&#34;&gt;trait 作为参数&lt;/h2&gt;
+&lt;p&gt;通过将 trait 作为函数参数，可以使该参数支持任何实现了指定 trait 的类型。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Thread in Rust</title>
       <link>https://tpcad.github.io/posts/rust_thread/</link>
