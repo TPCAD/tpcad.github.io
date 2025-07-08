@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Rust on Eulamber</title>
-    <link>http://localhost:1313/tags/rust/</link>
+    <link>https://tpcad.github.io/tags/rust/</link>
     <description>Recent content in Rust on Eulamber</description>
     <generator>Hugo -- 0.147.9</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 03 Jul 2024 11:47:33 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tpcad.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Thread in Rust</title>
-      <link>http://localhost:1313/posts/rust_thread/</link>
+      <link>https://tpcad.github.io/posts/rust_thread/</link>
       <pubDate>Wed, 03 Jul 2024 11:47:33 +0800</pubDate>
-      <guid>http://localhost:1313/posts/rust_thread/</guid>
+      <guid>https://tpcad.github.io/posts/rust_thread/</guid>
       <description>&lt;h2 id=&#34;线程基础&#34;&gt;线程基础&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;创建线程&lt;/li&gt;
@@ -68,9 +68,9 @@
     </item>
     <item>
       <title>Rust Smart Pointer</title>
-      <link>http://localhost:1313/posts/rust_smart_pointer/</link>
+      <link>https://tpcad.github.io/posts/rust_smart_pointer/</link>
       <pubDate>Tue, 02 Jul 2024 15:57:07 +0800</pubDate>
-      <guid>http://localhost:1313/posts/rust_smart_pointer/</guid>
+      <guid>https://tpcad.github.io/posts/rust_smart_pointer/</guid>
       <description>&lt;h2 id=&#34;boxt&#34;&gt;&lt;code&gt;Box&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c6d0f5;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ca9ee6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#8caaee&#34;&gt;main&lt;/span&gt;() {
