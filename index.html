@@ -167,6 +167,27 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Sed 参考手册
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Sed 是一个流编辑器，按行处理输入的文本。Sed 默认不会修改文件，只会将修改的内容输出到标准输出。
+模式空间与保持空间 Sed 有两个用于处理输入行的临时缓冲区，模式空间（Pattern Space）和保持空间（Holding Space）。
+模式空间相当于工厂的流水线，每一个输入行都会进入模式空间，一般的命令都会在模式空间进行。在处理结束后模式空间的内容会被打印到标准输出，并自动清空模式空间。
+保持空间是模式空间的缓冲区，用于临时保存模式空间的数据，一般的命令无法作用于保持空间。保持空间的内容不会主动清空，也不会主动打印。
+Sed 每处理一行都会先将其保存到模式空间，若该行满足条件，则执行命令。命令执行完毕或输入行不满足条件，则打印模式空间内容到标准输出并清空模式空间。
+命令行参数 -n, –silent, –quiet Sed 处理完一行后默认会打印模式空间内容到标准输出。
+# test.md line one sed &#39;1p&#39; test.md # output # line one # line one # line two 使用 -n，--silent 或 --quiet 参数可以关闭自动打印。
+sed &#39;1p&#39; test.md # output # line one -e, –expression -e 和 --expression 用于直接指定 sed 脚本。
+sed -e &#39;s/Tmux/Zellij/&#39; todo.md sed --expression=&#39;s/Tmux/Zellij/&#39; todo.md 一般情况下不需要使用参数指定 sed 脚本，但 -e 和 --expression 可以同时指定多个 sed 脚本。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-07-08 17:20:30 +0800 +0800'>July 8, 2025</span>&nbsp;·&nbsp;TPCAD</footer>
+  <a class="entry-link" aria-label="post link to Sed 参考手册" href="https://tpcad.github.io/posts/sed/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">C&#43;&#43; 初始化
     </h2>
   </header>
@@ -322,23 +343,6 @@ pub struct Todos { pub list: Vec&lt;Todo&gt;, } #[derive(Debug)] pub struct Todo
   </div>
   <footer class="entry-footer"><span title='2024-07-10 20:54:19 +0800 +0800'>July 10, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
   <a class="entry-link" aria-label="post link to Rust Iterator" href="https://tpcad.github.io/posts/rust_iterator/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">TCP 基础
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>TCP 首部 --- title: &#34;TCP Packet&#34; --- packet-beta 0-15: &#34;源端口号&#34; 16-31: &#34;目的端口号&#34; 32-63: &#34;序列号&#34; 64-95: &#34;确认应答号&#34; 96-99: &#34;数据偏移量&#34; 100-105: &#34;保留&#34; 106: &#34;URG&#34; 107: &#34;ACK&#34; 108: &#34;PSH&#34; 109: &#34;RST&#34; 110: &#34;SYN&#34; 111: &#34;FIN&#34; 112-127: &#34;窗口&#34; 128-143: &#34;校验和&#34; 144-159: &#34;紧急指针&#34; 160-191: &#34;选项（长度可变）&#34; 序列号：TCP 是面向字节流的，其传输的每一个数据字节都对应一个序列号。序列号的初始值是一个随机数，每发送一次 TCP 报文序列号都会累加一次报文的数据字节数
-确认应答号：下一次期望收到的数据的序列号
-数据偏移量：数据部分的偏移量，也就是首部的长度。单位为 4 字节。因此 TCP 首部最长为 $(2^4-1)*4=60$ 字节。
-控制位：
-ACK：该位为 1 时表示确认应答字段有效，除最初建立连接时的 SYN 包外该位必须置 1 RST：该位为 1 时表示 TCP 连接出现异常必须强制断开连接 SYN：该位为 1 时表示希望建立 TCP 连接，并在其序列号字段确定序列号初始值 FIN：该位为 1 时表示今后不会再有数据发送，希望断开 TCP 连接 TCP 连接 三次握手 建立一个 TCP 连接需要经过三次握手过程。
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-07 09:03:08 +0800 +0800'>July 7, 2024</span>&nbsp;·&nbsp;TPCAD</footer>
-  <a class="entry-link" aria-label="post link to TCP 基础" href="https://tpcad.github.io/posts/net_tcp/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
