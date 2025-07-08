@@ -16,12 +16,12 @@
       <description>&lt;h2 id=&#34;进程&#34;&gt;进程&lt;/h2&gt;
 &lt;h3 id=&#34;进程的状态&#34;&gt;进程的状态&lt;/h3&gt;
 &lt;p&gt;一个进程至少有三种基本状态，即就绪、运行、阻塞状态。&lt;/p&gt;
-&lt;div class=&#34;mermaid&#34;&gt;stateDiagram-v2
-    Ready --&gt; Running
-    Running --&gt; Ready
-    Running --&gt; Blocked
-    Blocked --&gt; Ready
-&lt;/div&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;stateDiagram-v2
+    Ready --&amp;gt; Running
+    Running --&amp;gt; Ready
+    Running --&amp;gt; Blocked
+    Blocked --&amp;gt; Ready
+&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;就绪状态（Ready）：获得时间片后即可运行&lt;/li&gt;

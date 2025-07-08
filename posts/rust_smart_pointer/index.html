@@ -40,7 +40,7 @@ Deref Trait
 实现 Deref trait 可以重载解引用运算符 *。">
 <meta name="author" content="TPCAD">
 <link rel="canonical" href="https://tpcad.github.io/posts/rust_smart_pointer/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c6ac5022ea18f299471cf610bc8bb93f2f3a1cb18febb437ce35e5aec7532df2.css" integrity="sha256-xqxQIuoY8plHHPYQvIu5Py86HLGP67Q3zjXlrsdTLfI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://tpcad.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://tpcad.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://tpcad.github.io/favicon-32x32.png">
@@ -85,29 +85,7 @@ Deref Trait
         }
 
     </style>
-</noscript>
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-
-const config = {
-    startOnLoad:true,
-    theme: 'forest',
-    themeVariables: {
-        lineColor: "#fafafa"    
-    },
-    flowchart: {
-        useMaxWidth:false,
-        htmlLabels:true
-        }
-};
-mermaid.initialize(config);
-
-
-window.onload = () => {
-    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-}
-</script>
-<meta property="og:url" content="https://tpcad.github.io/posts/rust_smart_pointer/">
+</noscript><meta property="og:url" content="https://tpcad.github.io/posts/rust_smart_pointer/">
   <meta property="og:site_name" content="Eulamber">
   <meta property="og:title" content="Rust Smart Pointer">
   <meta property="og:description" content="Box&lt;T&gt; Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。
@@ -278,29 +256,95 @@ Deref Trait
     <div class="post-meta"><span title='2024-07-02 15:57:07 +0800 +0800'>July 2, 2024</span>&nbsp;·&nbsp;TPCAD
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#boxt"><code>Box&lt;T&gt;</code></a></li>
-    <li><a href="#deref-trait">Deref Trait</a>
-      <ul>
-        <li><a href="#deref-强制转换">Deref 强制转换</a></li>
-      </ul>
-    </li>
-    <li><a href="#drop-trait">Drop Trait</a></li>
-    <li><a href="#rct"><code>Rc&lt;T&gt;</code></a></li>
-    <li><a href="#refcellt"><code>RefCell&lt;T&gt;</code></a></li>
-    <li><a href="#weakt"><code>Weak&lt;T&gt;</code></a></li>
-  </ul>
-</nav>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#boxt" aria-label="Box&lt;T&gt;"><code>Box&lt;T&gt;</code></a></li>
+                    <li>
+                        <a href="#deref-trait" aria-label="Deref Trait">Deref Trait</a><ul>
+                            
+                    <li>
+                        <a href="#deref-%e5%bc%ba%e5%88%b6%e8%bd%ac%e6%8d%a2" aria-label="Deref 强制转换">Deref 强制转换</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#drop-trait" aria-label="Drop Trait">Drop Trait</a></li>
+                    <li>
+                        <a href="#rct" aria-label="Rc&lt;T&gt;"><code>Rc&lt;T&gt;</code></a></li>
+                    <li>
+                        <a href="#refcellt" aria-label="RefCell&lt;T&gt;"><code>RefCell&lt;T&gt;</code></a></li>
+                    <li>
+                        <a href="#weakt" aria-label="Weak&lt;T&gt;"><code>Weak&lt;T&gt;</code></a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="boxt"><code>Box&lt;T&gt;</code><a hidden class="anchor" aria-hidden="true" href="#boxt">#</a></h2>
 <p>Box 是最简单的智能指针，它允许你将一个值放在堆上而不是栈上。</p>
@@ -546,12 +590,12 @@ Deref Trait
 
   </div>
 
-
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://tpcad.github.io/tags/rust/">Rust</a></li>
     </ul>
   </footer>
+
 </article>
     </main>
     

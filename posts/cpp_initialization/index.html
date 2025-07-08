@@ -62,7 +62,7 @@ case 2
 不带初始化器使用 new 表达式创建一个对象。">
 <meta name="author" content="TPCAD">
 <link rel="canonical" href="https://tpcad.github.io/posts/cpp_initialization/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c6ac5022ea18f299471cf610bc8bb93f2f3a1cb18febb437ce35e5aec7532df2.css" integrity="sha256-xqxQIuoY8plHHPYQvIu5Py86HLGP67Q3zjXlrsdTLfI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://tpcad.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://tpcad.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://tpcad.github.io/favicon-32x32.png">
@@ -107,29 +107,7 @@ case 2
         }
 
     </style>
-</noscript>
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-
-const config = {
-    startOnLoad:true,
-    theme: 'forest',
-    themeVariables: {
-        lineColor: "#fafafa"    
-    },
-    flowchart: {
-        useMaxWidth:false,
-        htmlLabels:true
-        }
-};
-mermaid.initialize(config);
-
-
-window.onload = () => {
-    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-}
-</script>
-<meta property="og:url" content="https://tpcad.github.io/posts/cpp_initialization/">
+</noscript><meta property="og:url" content="https://tpcad.github.io/posts/cpp_initialization/">
   <meta property="og:site_name" content="Eulamber">
   <meta property="og:title" content="C&#43;&#43; 初始化">
   <meta property="og:description" content="变量的初始化会在构造时提供变量的初始值。
@@ -327,42 +305,181 @@ case 2
     <div class="post-meta"><span title='2024-12-08 09:54:47 +0800 +0800'>December 8, 2024</span>&nbsp;·&nbsp;TPCAD
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#默认初始化">默认初始化</a>
-      <ul>
-        <li><a href="#不确定值">不确定值</a></li>
-        <li><a href="#示例">示例</a></li>
-      </ul>
-    </li>
-    <li><a href="#值初始化">值初始化</a>
-      <ul>
-        <li><a href="#示例-1">示例</a></li>
-      </ul>
-    </li>
-    <li><a href="#直接初始化">直接初始化</a>
-      <ul>
-        <li><a href="#触发示例">触发示例</a></li>
-        <li><a href="#效果示例">效果示例</a></li>
-      </ul>
-    </li>
-    <li><a href="#复制初始化">复制初始化</a>
-      <ul>
-        <li><a href="#触发示例-1">触发示例</a></li>
-        <li><a href="#效果示例-1">效果示例</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e9%bb%98%e8%ae%a4%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="默认初始化">默认初始化</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%b8%8d%e7%a1%ae%e5%ae%9a%e5%80%bc" aria-label="不确定值">不确定值</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b" aria-label="示例">示例</a><ul>
+                            
+                    <li>
+                        <a href="#case-1" aria-label="case 1">case 1</a></li>
+                    <li>
+                        <a href="#case-2" aria-label="case 2">case 2</a></li>
+                    <li>
+                        <a href="#case-3" aria-label="case 3">case 3</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%80%bc%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="值初始化">值初始化</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b-1" aria-label="示例">示例</a><ul>
+                            
+                    <li>
+                        <a href="#case-1-1" aria-label="case 1">case 1</a></li>
+                    <li>
+                        <a href="#case-2-1" aria-label="case 2">case 2</a></li>
+                    <li>
+                        <a href="#case-3-1" aria-label="case 3">case 3</a></li>
+                    <li>
+                        <a href="#case-4" aria-label="case 4">case 4</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e7%9b%b4%e6%8e%a5%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="直接初始化">直接初始化</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%a7%a6%e5%8f%91%e7%a4%ba%e4%be%8b" aria-label="触发示例">触发示例</a><ul>
+                            
+                    <li>
+                        <a href="#case-1-2" aria-label="case 1">case 1</a></li>
+                    <li>
+                        <a href="#case-2-2" aria-label="case 2">case 2</a></li>
+                    <li>
+                        <a href="#case-3-2" aria-label="case 3">case 3</a></li>
+                    <li>
+                        <a href="#case-4-1" aria-label="case 4">case 4</a></li>
+                    <li>
+                        <a href="#case-5" aria-label="case 5">case 5</a></li>
+                    <li>
+                        <a href="#case-6" aria-label="case 6">case 6</a></li>
+                    <li>
+                        <a href="#case-7" aria-label="case 7">case 7</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%95%88%e6%9e%9c%e7%a4%ba%e4%be%8b" aria-label="效果示例">效果示例</a><ul>
+                            
+                    <li>
+                        <a href="#case-1-3" aria-label="case 1">case 1</a></li>
+                    <li>
+                        <a href="#case-2-3" aria-label="case 2">case 2</a></li>
+                    <li>
+                        <a href="#case-3-3" aria-label="case 3">case 3</a></li>
+                    <li>
+                        <a href="#case-4-2" aria-label="case 4">case 4</a></li>
+                    <li>
+                        <a href="#case-5-1" aria-label="case 5">case 5</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%a4%8d%e5%88%b6%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="复制初始化">复制初始化</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%a7%a6%e5%8f%91%e7%a4%ba%e4%be%8b-1" aria-label="触发示例">触发示例</a><ul>
+                            
+                    <li>
+                        <a href="#case-1-4" aria-label="case 1">case 1</a></li>
+                    <li>
+                        <a href="#case-2-4" aria-label="case 2">case 2</a></li>
+                    <li>
+                        <a href="#case-3-4" aria-label="case 3">case 3</a></li>
+                    <li>
+                        <a href="#case-4-3" aria-label="case 4">case 4</a></li>
+                    <li>
+                        <a href="#case-5-2" aria-label="case 5">case 5</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%95%88%e6%9e%9c%e7%a4%ba%e4%be%8b-1" aria-label="效果示例">效果示例</a><ul>
+                            
+                    <li>
+                        <a href="#case-1-5" aria-label="case 1">case 1</a></li>
+                    <li>
+                        <a href="#case-2-5" aria-label="case 2">case 2</a></li>
+                    <li>
+                        <a href="#case-3-5" aria-label="case 3">case 3</a></li>
+                    <li>
+                        <a href="#case-4-4" aria-label="case 4">case 4</a></li>
+                    <li>
+                        <a href="#case-5-3" aria-label="case 5">case 5</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><p>变量的初始化会在构造时提供变量的初始值。</p>
 <p>初始值可以由声明符或 new 表达式的 <strong>初始化器</strong> 部分提供。在函数调用时也会发生：函数形参及函数返回值也会被初始化。</p>
@@ -1029,11 +1146,11 @@ foo copy ctor
 
   </div>
 
-
   <footer class="post-footer">
     <ul class="post-tags">
     </ul>
   </footer>
+
 </article>
     </main>
     

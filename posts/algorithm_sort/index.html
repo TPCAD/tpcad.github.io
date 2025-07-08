@@ -46,7 +46,7 @@ Bubble Sort
 以升序为例，在未排序元素中依次比较相邻两个元素，若乱序则交换两个元素，这样一来较大的元素就会被慢慢移动到末尾有序排列。通常在冒泡排序中设置一个 flag，当没有发生交换操作时，说明数组已经有序，停止遍历。">
 <meta name="author" content="TPCAD">
 <link rel="canonical" href="https://tpcad.github.io/posts/algorithm_sort/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c6ac5022ea18f299471cf610bc8bb93f2f3a1cb18febb437ce35e5aec7532df2.css" integrity="sha256-xqxQIuoY8plHHPYQvIu5Py86HLGP67Q3zjXlrsdTLfI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://tpcad.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://tpcad.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://tpcad.github.io/favicon-32x32.png">
@@ -91,29 +91,7 @@ Bubble Sort
         }
 
     </style>
-</noscript>
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-
-const config = {
-    startOnLoad:true,
-    theme: 'forest',
-    themeVariables: {
-        lineColor: "#fafafa"    
-    },
-    flowchart: {
-        useMaxWidth:false,
-        htmlLabels:true
-        }
-};
-mermaid.initialize(config);
-
-
-window.onload = () => {
-    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-}
-</script>
-<meta property="og:url" content="https://tpcad.github.io/posts/algorithm_sort/">
+</noscript><meta property="og:url" content="https://tpcad.github.io/posts/algorithm_sort/">
   <meta property="og:site_name" content="Eulamber">
   <meta property="og:title" content="Classic Sort Algorithm">
   <meta property="og:description" content="Selection Sort 以升序为例，选择排序的思想是遍历未排序元素，选择其中最小的元素，将其移动到未排序元素开始位置。
@@ -289,71 +267,152 @@ Bubble Sort
     <div class="post-meta"><span title='2024-07-02 20:48:29 +0800 +0800'>July 2, 2024</span>&nbsp;·&nbsp;TPCAD
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#selection-sort">Selection Sort</a>
-      <ul>
-        <li><a href="#性质">性质</a></li>
-        <li><a href="#演示">演示</a></li>
-        <li><a href="#示例代码">示例代码</a></li>
-      </ul>
-    </li>
-    <li><a href="#bubble-sort">Bubble Sort</a>
-      <ul>
-        <li><a href="#性质-1">性质</a></li>
-        <li><a href="#演示-1">演示</a></li>
-        <li><a href="#示例代码-1">示例代码</a></li>
-      </ul>
-    </li>
-    <li><a href="#insertion-sort">Insertion Sort</a>
-      <ul>
-        <li><a href="#性质-2">性质</a></li>
-        <li><a href="#演示-2">演示</a></li>
-        <li><a href="#示例代码-2">示例代码</a></li>
-        <li><a href="#优化">优化</a></li>
-      </ul>
-    </li>
-    <li><a href="#shell-sort">Shell Sort</a>
-      <ul>
-        <li><a href="#性质-3">性质</a></li>
-        <li><a href="#演示-3">演示</a></li>
-        <li><a href="#示例代码-3">示例代码</a></li>
-      </ul>
-    </li>
-    <li><a href="#quick-sort">Quick Sort</a>
-      <ul>
-        <li><a href="#性质-4">性质</a></li>
-        <li><a href="#演示-4">演示</a></li>
-        <li><a href="#示例代码-4">示例代码</a></li>
-      </ul>
-    </li>
-    <li><a href="#merge-sort">Merge Sort</a>
-      <ul>
-        <li><a href="#归并排序求逆序对数量">归并排序求逆序对数量</a></li>
-      </ul>
-    </li>
-    <li><a href="#heap-sort">Heap Sort</a>
-      <ul>
-        <li><a href="#性质-5">性质</a></li>
-        <li><a href="#示例代码-5">示例代码</a></li>
-      </ul>
-    </li>
-    <li><a href="#计数排序">计数排序</a>
-      <ul>
-        <li><a href="#示例代码-6">示例代码</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#selection-sort" aria-label="Selection Sort">Selection Sort</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%a7%e8%b4%a8" aria-label="性质">性质</a></li>
+                    <li>
+                        <a href="#%e6%bc%94%e7%a4%ba" aria-label="演示">演示</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81" aria-label="示例代码">示例代码</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#bubble-sort" aria-label="Bubble Sort">Bubble Sort</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%a7%e8%b4%a8-1" aria-label="性质">性质</a></li>
+                    <li>
+                        <a href="#%e6%bc%94%e7%a4%ba-1" aria-label="演示">演示</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81-1" aria-label="示例代码">示例代码</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#insertion-sort" aria-label="Insertion Sort">Insertion Sort</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%a7%e8%b4%a8-2" aria-label="性质">性质</a></li>
+                    <li>
+                        <a href="#%e6%bc%94%e7%a4%ba-2" aria-label="演示">演示</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81-2" aria-label="示例代码">示例代码</a></li>
+                    <li>
+                        <a href="#%e4%bc%98%e5%8c%96" aria-label="优化">优化</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#shell-sort" aria-label="Shell Sort">Shell Sort</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%a7%e8%b4%a8-3" aria-label="性质">性质</a></li>
+                    <li>
+                        <a href="#%e6%bc%94%e7%a4%ba-3" aria-label="演示">演示</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81-3" aria-label="示例代码">示例代码</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#quick-sort" aria-label="Quick Sort">Quick Sort</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%a7%e8%b4%a8-4" aria-label="性质">性质</a></li>
+                    <li>
+                        <a href="#%e6%bc%94%e7%a4%ba-4" aria-label="演示">演示</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81-4" aria-label="示例代码">示例代码</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#merge-sort" aria-label="Merge Sort">Merge Sort</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%bd%92%e5%b9%b6%e6%8e%92%e5%ba%8f%e6%b1%82%e9%80%86%e5%ba%8f%e5%af%b9%e6%95%b0%e9%87%8f" aria-label="归并排序求逆序对数量">归并排序求逆序对数量</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#heap-sort" aria-label="Heap Sort">Heap Sort</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%a7%e8%b4%a8-5" aria-label="性质">性质</a></li>
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81-5" aria-label="示例代码">示例代码</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%ae%a1%e6%95%b0%e6%8e%92%e5%ba%8f" aria-label="计数排序">计数排序</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81-6" aria-label="示例代码">示例代码</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="selection-sort">Selection Sort<a hidden class="anchor" aria-hidden="true" href="#selection-sort">#</a></h2>
 <p>以升序为例，选择排序的思想是遍历未排序元素，选择其中最小的元素，将其移动到未排序元素开始位置。</p>
@@ -784,12 +843,12 @@ Bubble Sort
 
   </div>
 
-
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://tpcad.github.io/tags/algorithm/">Algorithm</a></li>
     </ul>
   </footer>
+
 </article>
     </main>
     

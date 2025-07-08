@@ -235,12 +235,12 @@ $$&lt;/p&gt;
       <description>&lt;h2 id=&#34;进程&#34;&gt;进程&lt;/h2&gt;
 &lt;h3 id=&#34;进程的状态&#34;&gt;进程的状态&lt;/h3&gt;
 &lt;p&gt;一个进程至少有三种基本状态，即就绪、运行、阻塞状态。&lt;/p&gt;
-&lt;div class=&#34;mermaid&#34;&gt;stateDiagram-v2
-    Ready --&gt; Running
-    Running --&gt; Ready
-    Running --&gt; Blocked
-    Blocked --&gt; Ready
-&lt;/div&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;stateDiagram-v2
+    Ready --&amp;gt; Running
+    Running --&amp;gt; Ready
+    Running --&amp;gt; Blocked
+    Blocked --&amp;gt; Ready
+&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;就绪状态（Ready）：获得时间片后即可运行&lt;/li&gt;
@@ -431,27 +431,27 @@ $$&lt;/p&gt;
       <pubDate>Sun, 07 Jul 2024 09:03:08 +0800</pubDate>
       <guid>https://tpcad.github.io/posts/net_tcp/</guid>
       <description>&lt;h2 id=&#34;tcp-首部&#34;&gt;TCP 首部&lt;/h2&gt;
-&lt;div class=&#34;mermaid&#34;&gt;---
-title: &#34;TCP Packet&#34;
+&lt;pre class=&#34;mermaid&#34;&gt;---
+title: &amp;#34;TCP Packet&amp;#34;
 ---
 packet-beta
-0-15: &#34;源端口号&#34;
-16-31: &#34;目的端口号&#34;
-32-63: &#34;序列号&#34;
-64-95: &#34;确认应答号&#34;
-96-99: &#34;数据偏移量&#34;
-100-105: &#34;保留&#34;
-106: &#34;URG&#34;
-107: &#34;ACK&#34;
-108: &#34;PSH&#34;
-109: &#34;RST&#34;
-110: &#34;SYN&#34;
-111: &#34;FIN&#34;
-112-127: &#34;窗口&#34;
-128-143: &#34;校验和&#34;
-144-159: &#34;紧急指针&#34;
-160-191: &#34;选项（长度可变）&#34;
-&lt;/div&gt;
+0-15: &amp;#34;源端口号&amp;#34;
+16-31: &amp;#34;目的端口号&amp;#34;
+32-63: &amp;#34;序列号&amp;#34;
+64-95: &amp;#34;确认应答号&amp;#34;
+96-99: &amp;#34;数据偏移量&amp;#34;
+100-105: &amp;#34;保留&amp;#34;
+106: &amp;#34;URG&amp;#34;
+107: &amp;#34;ACK&amp;#34;
+108: &amp;#34;PSH&amp;#34;
+109: &amp;#34;RST&amp;#34;
+110: &amp;#34;SYN&amp;#34;
+111: &amp;#34;FIN&amp;#34;
+112-127: &amp;#34;窗口&amp;#34;
+128-143: &amp;#34;校验和&amp;#34;
+144-159: &amp;#34;紧急指针&amp;#34;
+160-191: &amp;#34;选项（长度可变）&amp;#34;
+&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;序列号&lt;/strong&gt;：TCP 是面向字节流的，其传输的每一个数据字节都对应一个序列号。序列号的初始值是一个随机数，每发送一次 TCP 报文序列号都会累加一次报文的数据字节数&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;确认应答号&lt;/strong&gt;：下一次期望收到的数据的序列号&lt;/p&gt;
